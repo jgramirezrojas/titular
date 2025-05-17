@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docencia - Juan Gabriel Ramírez</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Incluir el plugin de anotaciones DESPUÉS de Chart.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.2.1/chartjs-plugin-annotation.min.js"></script>
+</head>
+
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Prof. Juan Gabriel Ramírez</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="docencia.html" class="active">Docencia</a></li>
+                <li><a href="investigacion.html">Investigación</a></li>
+                <li><a href="institucional.html">Desarrollo Institucional</a></li>
+                <li><a href="vision.html">Visión y Reflexión</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="teaching-hero" class="page-hero">
+            <!-- <div class="hero-overlay"></div> -->
+            <div class="hero-content-simple">
+                <h1>Mi Labor Docente</h1>
+                <p>Integrando la investigación y la innovación pedagógica para formar a las futuras generaciones.</p>
+            </div>
+        </section>
+
+        <section id="teaching-philosophy" >
+            <div class="container">
+            <h2>Filosofía de Enseñanza</h2>
+            <p>
+                Mi enfoque pedagógico se fundamenta en la integración deliberada entre investigación y docencia. Estoy convencido de que los estudiantes desarrollan una comprensión más profunda y contextualizada cuando participan activamente en procesos investigativos. Esta filosofía se materializa incorporando mi trabajo científico en el aula, implementando materiales digitales y demostraciones experimentales, y cultivando el pensamiento crítico y la autonomía intelectual.
+            </p>
+            </div>
+        </section>
+
+        <section id="new-courses"> <!-- .container se aplica dentro -->
+            <div  <div class="container container-with-alt-bg">
+                <h2>Desarrollo de Nuevos Cursos</h2>
+                <div class="cards-grid">
+                    <div class="card course-card">
+                        <div class="card-icon"><i class="fas fa-atom"></i></div>
+                        <h3>Magnetismo y Materiales Magnéticos</h3>
+                        <p class="course-code">FISI-3708/4708</p>
+                        <p>Integra software de simulación micromagnética (OOMMF, Ubermag) y experimentos de laboratorio. Evaluaciones docentes: 4.5-4.9.</p>
+                        <button class="btn-modal" data-modal-target="modal-magnetismo">Ver Más</button>
+                    </div>
+                    <div class="card course-card">
+                        <div class="card-icon"><i class="fas fa-x-ray"></i></div>
+                        <h3>Introducción a la Difracción de Rayos X</h3>
+                        <p class="course-code">FISI-3763/4763</p>
+                        <p>Combina fundamentos teóricos con análisis de datos reales y charlas especializadas. Enfoque en aprendizaje basado en proyectos (60%).</p>
+                        <button class="btn-modal" data-modal-target="modal-rayos-x">Ver Más</button>
+                    </div>
+                    <div class="card course-card">
+                        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+                        <h3>Topics in Core Level Spectroscopy</h3>
+                        <p class="course-code">FISI-4594/3720</p>
+                        <p>Introduce espectroscopía de nivel de núcleo con radiación sincrotrón. Aprendizaje práctico con software especializado (Quanty, CTM4DOC).</p>
+                        <button class="btn-modal" data-modal-target="modal-spectroscopy">Ver Más</button>
+                    </div>
+                    <p>&nbsp;</p>
+                </div>
+            </div>
+        </section>
+        <!-- Modales para Nuevos Cursos (sin cambios) -->
+        <div id="modal-magnetismo" class="modal">
+            <div class="modal-content">
+                <span class="close-button">×</span>
+                <h3>Magnetismo y Materiales Magnéticos (FISI-3708/4708)</h3>
+
+                <p><strong>Períodos Impartidos:</strong> 3</p>
+                <p><strong>Nivel:</strong> Pregrado/Posgrado</p>
+                <p><strong>Necesidad Curricular:</strong> Fortalecimiento de la línea de nanomagnetismo del departamento.</p>
+
+                <h4 class="modal-subtitle">Componente Innovador:</h4>
+                <ul>
+                    <li>Integración directa de software de simulación micromagnética utilizado en investigación de frontera (OOMMF, Ubermag).</li>
+                    <li>Integración con experimentos prácticos en el Laboratorio de Nanomagnetismo.</li>
+                    <li>Permite a los estudiantes construir un entendimiento sólido desde principios básicos hasta aplicaciones avanzadas (computación neuromórfica y cuántica).</li>
+                </ul>
+
+                <h4 class="modal-subtitle">Metodología:</h4>
+                <ul>
+                    <li>Clases teóricas (40%)</li>
+                    <li>Talleres prácticos con herramientas de simulación (40%)</li>
+                    <li>Proyecto final de investigación o simulación (20%)</li>
+                </ul>
+
+                <p><strong>Evaluación Docente (Promedio):</strong> 152/4.5 - 162/4.9 (Calificaciones muy altas consistentemente).</p>
+                <p><strong>Impacto (Estudiantes):</strong> Aproximadamente 17 estudiantes por ofrecimiento.</p>
+
+                <h4 class="modal-subtitle">Descripción Adicional:</h4>
+                <p>
+                    Este curso, nacido directamente de mi línea de investigación en nanomagnetismo, proporciona las bases conceptuales necesarias para comprender los fenómenos magnéticos fundamentales para tecnologías emergentes. Su estructura progresiva (fundamentos del magnetismo → tipos de orden magnético → espintrónica → técnicas de caracterización) es clave.
+                </p>
+                <p>
+                    El elemento diferenciador es la incorporación de herramientas de simulación micromagnética de frontera, permitiendo que los estudiantes no solo comprendan la teoría sino que desarrollen competencias prácticas directamente transferibles a contextos investigativos. Las evaluaciones docentes excepcionales (entre 4.50 y 4.75 sobre 5.0 en diferentes semestres) confirman la efectividad de este enfoque integrado entre teoría, práctica computacional y aplicación experimental.
+                </p>
+            </div>
+        </div>
+        <div id="modal-rayos-x" class="modal">
+            <div class="modal-content">
+                <span class="close-button">×</span>
+                <h3>Introducción a la Difracción de Rayos X (FISI-3763/4763)</h3>
+
+                <p><strong>Períodos Impartidos:</strong> 1</p>
+                <p><strong>Nivel:</strong> Pregrado/Posgrado</p>
+                <p><strong>Necesidad Curricular:</strong> Análisis estructural para ciencia de materiales.</p>
+
+                <h4 class="modal-subtitle">Componente Innovador:</h4>
+                <ul>
+                    <li>Experimentos avanzados directamente en el laboratorio de difracción de Rayos X de la Facultad de Ciencias.</li>
+                    <li>Entrenamiento en análisis de datos experimentales reales obtenidos de Sincrotrón.</li>
+                    <li>Combinación de fundamentos teóricos con análisis de datos reales y un sistema de charlas especializadas preparadas por los estudiantes.</li>
+                </ul>
+
+                <h4 class="modal-subtitle">Metodología:</h4>
+                <ul>
+                    <li>Fundamentos teóricos (20%)</li>
+                    <li>Sesiones tutoriales y prácticas en laboratorio (20%)</li>
+                    <li>Aprendizaje basado en proyectos (60% del curso), desarrollando capacidades analíticas directamente aplicables en investigación.</li>
+                </ul>
+
+                <p><strong>Evaluación Docente (Promedio):</strong> 156/4.7</p>
+                <p><strong>Impacto (Estudiantes):</strong> Aproximadamente 15 estudiantes.</p>
+
+                <h4 class="modal-subtitle">Descripción Adicional:</h4>
+                <p>
+                    Este curso proporciona competencias fundamentales en caracterización estructural mediante difracción de rayos X, una técnica esencial en mi investigación de materiales para computación avanzada. La innovación metodológica reside en su enfoque práctico y aplicado.
+                </p>
+                <p>
+                    El fuerte componente de aprendizaje basado en proyectos (60% del curso) asegura el desarrollo de capacidades analíticas directamente transferibles a la investigación. Las sesiones prácticas en el laboratorio de difracción de la Facultad de Ciencias proporcionan una invaluable experiencia <em>hands-on</em> con equipamiento profesional. Esta estructura forma investigadores capaces de determinar independientemente parámetros estructurales, identificar fases cristalográficas y analizar propiedades fundamentales de materiales nanoestructurados.
+                </p>
+            </div>
+        </div>
+        <div id="modal-spectroscopy" class="modal">
+            <div class="modal-content">
+                <span class="close-button">×</span>
+                <h3>Topics in Core Level Spectroscopy (FISI-4594/3720)</h3>
+
+                <p><strong>Períodos Impartidos:</strong> 1</p>
+                <p><strong>Nivel:</strong> Pregrado/Posgrado</p>
+                <p><strong>Necesidad Curricular:</strong> Técnicas avanzadas de caracterización electrónica.</p>
+
+                <h4 class="modal-subtitle">Componente Innovador:</h4>
+                <ul>
+                    <li>Aplicación directa de técnicas de espectroscopía de nivel de núcleo utilizando radiación sincrotrón.</li>
+                    <li>Entrenamiento intensivo en el análisis de datos experimentales reales obtenidos de fuentes de Sincrotrón.</li>
+                    <li>Uso de software especializado (Quanty, CTM4DOC, Crispy) para simulaciones, aplicado directamente a sistemas de óxidos funcionales investigados en nuestro laboratorio.</li>
+                </ul>
+
+                <h4 class="modal-subtitle">Metodología:</h4>
+                <ul>
+                    <li>Enfoque por competencias claramente definidas.</li>
+                    <li>Aprendizaje práctico mediante simulaciones con software especializado.</li>
+                    <li>Aplicación directa de los conceptos y técnicas a sistemas de óxidos funcionales relevantes para la investigación actual del grupo.</li>
+                </ul>
+
+                <p><strong>Evaluación Docente (Promedio):</strong> 146/4.2</p>
+                <p><strong>Impacto (Estudiantes):</strong> Aproximadamente 15 estudiantes.</p>
+
+                <h4 class="modal-subtitle">Descripción Adicional:</h4>
+                <p>
+                    Este curso avanzado, inicialmente desarrollado durante mi estancia como profesor visitante en Unicamp (Brasil) e implementado posteriormente en Uniandes, introduce técnicas de espectroscopía de nivel de núcleo utilizando radiación sincrotrón. Estas técnicas son fundamentales para caracterizar la estructura electrónica de materiales complejos, clave para la computación avanzada y otras tecnologías emergentes.
+                </p>
+                <p>
+                    La innovación pedagógica radica en la combinación de un enfoque por competencias con aprendizaje práctico mediante simulaciones con software especializado. Este método se aplica directamente a los sistemas de óxidos funcionales que investigamos en nuestro laboratorio. Esta aproximación asegura que los estudiantes desarrollen tanto una base teórica sólida como habilidades prácticas en herramientas computacionales avanzadas, preparándolos directamente para la investigación en ciencia de materiales de vanguardia.
+                </p>
+            </div>
+        </div>
+        <section id="courses-taught">
+            <div class="container">
+            <h2>Cursos Impartidos por Período</h2>
+            <div class="section-intro">
+                <p>
+                    Mi trayectoria docente en la Universidad de los Andes (2015-2025) refleja un compromiso
+                    consistente con diferentes niveles formativos y áreas de la física. Como se evidencia
+                    a continuación, he mantenido un balance entre cursos magistrales fundamentales, cursos
+                    disciplinares especializados y cursos introductorios y de laboratorio, adaptando mis
+                    aproximaciones pedagógicas a las necesidades específicas de cada formato y nivel.
+                </p>
+            </div>
+            <div class="chart-display-area">
+                <div class="chart-container courses-type-chart-container">
+                    <h3>Distribución de Cursos por Tipo (Ejemplo)</h3>
+                    <canvas id="coursesTypeChart"></canvas>
+                </div>
+                <p>&nbsp;</p>
+                <p class="chart-caption">
+                    Esta gráfica ilustra la diversidad de cursos que he impartido. Ver 
+                    <a href="ruta-a-tu-dossier-completo.pdf" target="_blank">Dossier (Tabla 4.2.1)</a>.
+                </p>
+            </div>
+            <div class="text-center action-link-container">
+                <a href="#student-projects" class="btn btn-secondary">Explorar Proyectos Estudiantiles <i class="fas fa-chevron-down"></i></a>
+            </div>
+        </div>
+        </section>
+
+        <section id="student-projects"> <!-- .container se aplica dentro -->
+            <div class="container container-with-alt-bg">
+                <h2>Proyectos Experimentales, Teóricos y Computacionales</h2>
+                <p>El curso de Proyecto Experimental es una introducción fundamental a la investigación. Muchos estudiantes continúan con proyectos de monografía en nuestro grupo, demostrando el valor de este curso.</p>
+                <div class="project-highlight">
+                    <h4><i class="fas fa-cogs"></i> Moiré Optics (Daniel Santiago Rueda V.)</h4>
+                    <p>Experimental/Teórico Computacional (2024-01). Exploración de efectos ópticos en estructuras de Moiré.</p>
+                </div>
+                <div class="project-highlight">
+                    <h4><i class="fas fa-magnet"></i> Disorder effects on magnetic properties of HEO (Carlos Felipe Eugenio G.)</h4>
+                    <p>Experimental (2024-01). Investigación sobre el impacto del desorden en óxidos de alta entropía.</p>
+                </div>
+                 <p class="text-center" style="margin-top: 30px;">
+                    <small>Para una lista detallada de proyectos, por favor consulte el <a href="ruta-a-tu-dossier-completo.pdf" target="_blank">Dossier Completo (Tabla 4.3.1)</a>.</small>
+                </p>
+                <p>&nbsp;</p>
+            </div>
+        </section>
+
+        <section id="audiovisual-resources" class="container">
+            <h2>Recursos Audiovisuales de Apoyo Docente</h2>
+            <p>He desarrollado continuamente recursos audiovisuales, principalmente clases magistrales grabadas y playlists en YouTube, para complementar las clases, ofrecer explicaciones detalladas y proporcionar material de estudio asincrónico.</p>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon"><i class="fab fa-youtube"></i></div>
+                    <h3>Playlist Ondas y Fluidos</h3>
+                    <p>Videos de apoyo con explicaciones conceptuales, demostraciones y resolución de problemas.</p>
+                    <a href="https://www.youtube.com/playlist?list=TU_URL_PLAYLIST_ONDAS" target="_blank" class="link-arrow">Ver en YouTube <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="card">
+                    <div class="card-icon"><i class="fab fa-youtube"></i></div>
+                    <h3>Playlist Física 1</h3>
+                    <p>Clases grabadas, explicaciones de temas fundamentales de mecánica clásica y ejemplos.</p>
+                    <a href="https://www.youtube.com/playlist?list=TU_URL_PLAYLIST_FISICA1" target="_blank" class="link-arrow">Ver en YouTube <i class="fas fa-external-link-alt"></i></a>
+                </div>
+                <div class="card">
+                     <div class="card-icon"><i class="fab fa-youtube"></i></div>
+                    <h3>Playlist Introducción a la Física</h3>
+                    <p>Material complementario, discusiones temáticas y experimentos demostrativos adaptados.</p>
+                    <a href="https://www.youtube.com/playlist?list=TU_URL_PLAYLIST_INTRO" target="_blank" class="link-arrow">Ver en YouTube <i class="fas fa-external-link-alt"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="teaching-performance" > <!-- .container se aplica dentro -->
+            <div  <div class="container container-with-alt-bg">
+                <h2>Desempeño General en Docencia</h2>
+                <div class="performance-charts">
+                    <div class="chart-container">
+                        <h3>Evolución Puntaje Global (Fuente Uniandes)</h3>
+                        <canvas id="globalScoreChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Calificación por Concepto (Fuente Uniandes)</h3>
+                        <canvas id="conceptScoreChart"></canvas>
+                    </div>
+                </div>
+                <p>&nbsp;</p>
+                <p style="margin-top: 20px; text-align: center;">Análisis detallados y reflexiones sobre momentos específicos como el período 2023 (Feria de Proyectos) y las mejoras en 2024 y 2025 (uso de Gradescope, encuestas midterm) se encuentran en el dossier.</p>
+                <p>&nbsp;</p>
+            </div>
+        </section>
+
+                <!-- ... (sección anterior: Desempeño General en Docencia) ... -->
+
+                <section id="school-formation" class="container">
+                    <h2>Formación de Escuela: Cultivando el Talento Investigador</h2>
+                    <p class="section-intro-text">
+                        "Del laboratorio al aula" es la filosofía que guía mi compromiso con la formación de nuevas generaciones de científicos. La integración de estudiantes en proyectos de investigación de vanguardia no solo enriquece su aprendizaje, sino que también impulsa la producción de conocimiento y consolida una verdadera escuela de pensamiento.
+                    </p>
+        
+                    <div class="school-formation-grid">
+                        <div class="thesis-distribution-chart-area">
+                            <h3>Distribución de Tesis Dirigidas por Nivel (2015-2025)</h3>
+                            <p>Total: 26 Tesis Dirigidas</p>
+                            <div class="chart-container" style="height: 350px; max-width: 450px; margin: 20px auto;">
+                                <canvas id="thesisLevelDistributionChart"></canvas>
+                            </div>
+                            <p class="chart-caption">Esta distribución subraya mi dedicación a la mentoría en todos los niveles académicos, desde la iniciación en investigación hasta la formación doctoral avanzada.</p>
+                        </div>
+        
+                        <div class="featured-students-area">
+                            <h3>Estudiantes Destacados y su Desarrollo Profesional</h3>
+                            <div class="student-filter-controls">
+                                <label for="student-level-filter">Filtrar por Nivel:</label>
+                                <select id="student-level-filter">
+                                    <option value="all">Mostrar Todos</option>
+                                    <option value="doctorado" selected>Doctorado</option>
+                                    <option value="maestria">Maestría</option>
+                                    <option value="pregrado">Pregrado</option>
+                                </select>
+                            </div>
+        
+                            <div id="featured-students-list" class="featured-students-container">
+                                <!-- Estudiantes se cargarán aquí por JS -->
+                                <!-- Ejemplo de estructura para un estudiante (se generará dinámicamente) -->
+                                <!--
+                                <div class="student-card" data-level="doctorado">
+                                    <div class="student-card-header">
+                                        <i class="fas fa-user-doctor student-icon"></i>
+                                        <h4>Alexander Cardona Rodríguez <span class="student-level-tag">Doctorado</span></h4>
+                                    </div>
+                                    <p><strong>Tesis:</strong> "Tuning the magnetic properties of multiferroic BiFeO₃: From bulk to nanoscale" (2016-2022).</p>
+                                    <p><strong>Logros:</strong> Cuatro publicaciones de alto impacto durante su doctorado. Actualmente profesor de cátedra y postdoctorando en proyecto SGR QUANEC.</p>
+                                    <p class="student-publications"><em>Publicaciones clave: Sci. Rep. (2019), JMMM (2022).</em></p>
+                                </div>
+                                -->
+                            </div>
+                            <p class="text-center" style="margin-top: 20px;">
+                                <small>Más detalles y la lista completa de tesis dirigidas se encuentran en el <a href="ruta-a-tu-dossier-completo.pdf" target="_blank">Dossier Completo (Sección 4.11)</a>.</small>
+                            </p>
+                        </div>
+                    </div>
+                </section>
+        
+                <!-- ... (resto de las secciones) ... -->
+    </main>
+
+    <footer>
+        <p>© 2025 Juan Gabriel Ramírez Rojas. Todos los derechos reservados.</p>
+        <p>Postulación a Profesor Titular - Universidad de los Andes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,2005 @@
+/* Estilos Globales y Resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+    background-color: #1a1a2e; /* Azul noche oscuro */
+    color: #e0e0e0; /* Gris claro para texto */
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1100px;
+    margin-left: auto;  /* Centrado automático */
+    margin-right: auto; /* Centrado automático */
+    padding: 0px 20px; /* Ej: 60px de padding arriba/abajo, 20px a los lados */
+                        /* Ajusta este padding vertical (60px) según lo necesites para el contenido */
+    overflow: hidden; /* Mantenido de tu CSS original */
+}
+
+.container-with-alt-bg {
+    
+    background-color: #162447; /* El color que usaba section-bg-alt */
+    border-radius: 8px;     /* Opcional: para tener bordes redondeados en estos bloques */
+    /* No necesitas repetir max-width, margin, o padding aquí,
+       ya que se aplican desde la clase .container que está en el mismo div. */
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    color: #ffffff; /* Blanco para encabezados principales */
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #80bfff; /* Azul claro acento */
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: #00aaff; /* Azul vibrante para subrayado */
+}
+
+main p a, /* Enlaces dentro de párrafos en el main */
+.caption-text a, /* Enlaces dentro de .caption-text si los hubiera */
+.text-center small a { /* Ya tenías uno para este, podemos unificar o mejorar */
+    color: #80bfff; /* Un azul claro que usamos para acentos */
+    text-decoration: none; /* Quitar subrayado por defecto */
+    font-weight: 600; /* Hacerlo un poco más notorio */
+    border-bottom: 1px dotted #80bfff; /* Subrayado punteado sutil */
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+main p a:hover,
+.caption-text a:hover,
+.text-center small a:hover {
+    color: #00aaff; /* Azul más brillante al pasar el mouse */
+    border-bottom-color: #00aaff;
+}
+
+section {
+    /* padding: 60px 0; */ /* Puedes reducir o quitar el padding vertical de la <section>
+                              si el .container ahora maneja todo el padding interno.
+                              Si lo mantienes, será espacio ADICIONAL alrededor
+                              del .container con fondo. */
+    padding: 0; /* Por ejemplo, si el .container se encarga de todo el padding */
+    margin-bottom: 30px; /* Espacio entre una sección y la siguiente */
+                          /* Ajusta este valor según el espaciado deseado */
+}
+
+/* Header y Navegación */
+header {
+    background-color: #162447; /* Un poco más claro que el fondo */
+    color: #fff;
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+nav .logo a {
+    color: #fff;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+nav .nav-links {
+    list-style: none;
+    display: flex;
+}
+
+nav .nav-links li {
+    margin-left: 25px;
+}
+
+nav .nav-links a {
+    color: #e0e0e0;
+    text-decoration: none;
+    font-size: 1rem;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav .nav-links a:hover,
+nav .nav-links a.active {
+    background-color: #00aaff;
+    color: #fff;
+}
+
+.burger {
+    display: none;
+    cursor: pointer;
+}
+
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+/* Contenedor principal de las páginas para el padding del header */
+main {
+    padding-top: 70px; /* Ajusta esto a la altura exacta de tu header */
+}
+/* Hero Section */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; /* Importante para el posicionamiento de hijos absolutos */
+    overflow: hidden;
+    /* Ya no necesita padding-top aquí, main lo maneja */
+    background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-lab.jpg') no-repeat center center/cover;
+}
+
+.hero-overlay { /* Si no usas gradient en background de #hero */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(26, 26, 46, 0.6); /* Superposición oscura */
+    z-index: 1;
+}
+
+.hero-content {
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    max-width: 1200px;
+    width: 100%;
+    padding: 0 40px;
+}
+
+.hero-text {
+    flex-basis: 60%;
+    text-align: left;
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.2;
+}
+.hero-text .highlight-text {
+    color: #00aaff; /* Azul brillante para la parte "Del Laboratorio al Aula" */
+}
+
+.hero-text .subtitle {
+    font-size: 1.5rem;
+    color: #c0c0c0;
+    margin-bottom: 30px;
+}
+
+.hero-image-container {
+    flex-basis: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-image-hero {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 5px solid #00aaff;
+    object-fit: cover;
+    box-shadow: 0 0 20px rgba(0, 170, 255, 0.5);
+}
+
+
+#trajectory-canvas {
+    position: absolute;
+    top: 0; /* O ajustarlo según la altura del header si el main no tuviera padding-top */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; /* Detrás del contenido */
+}
+
+
+/* Introduction Section */
+#introduction {
+    background-color: #162447;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+#introduction p {
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #c0c0c0;
+}
+
+/* Achievements Section */
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.achievement-item {
+    background-color: #1f3061; /* Azul más oscuro */
+    padding: 30px;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.achievement-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 170, 255, 0.3);
+}
+
+.achievement-item i {
+    font-size: 3rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+}
+
+.achievement-item .counter {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 5px;
+}
+
+.achievement-item p {
+    font-size: 1rem;
+    color: #c0c0c0;
+}
+
+/* Call to Action (CTA) Section */
+#cta {
+    text-align: center;
+}
+
+.cta-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1.1rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.btn-primary {
+    background-color: #00aaff;
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background-color: #0088cc;
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #00aaff;
+    border: 2px solid #00aaff;
+}
+
+.btn-secondary:hover {
+    background-color: #00aaff;
+    color: #fff;
+    transform: translateY(-3px);
+}
+
+/* Footer */
+footer {
+    background-color: #0e162f; /* Muy oscuro */
+    color: #a0a0a0;
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 60px;
+}
+
+footer p {
+    margin-bottom: 5px;
+    font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav .logo a {
+        font-size: 1.2rem;
+    }
+    .nav-links {
+        position: absolute;
+        right: 0px;
+        height: calc(100vh - 70px); /* Altura del header */
+        top: 70px; /* Altura del header */
+        background-color: #162447;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 60%;
+        transform: translateX(100%);
+        transition: transform 0.5s ease-in;
+        padding-top: 20px;
+    }
+
+    .nav-links li {
+        margin-left: 0;
+        margin-bottom: 20px;
+        opacity: 0;
+    }
+
+    .nav-links a {
+        font-size: 1.2rem;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .nav-active {
+        transform: translateX(0%);
+    }
+
+    /* Animación de los links */
+    .nav-active li {
+        opacity: 1;
+        transition: opacity 0.3s ease forwards 0.2s; /* Delay para que aparezcan después de abrir */
+    }
+
+
+    .hero-content {
+        flex-direction: column-reverse; /* Imagen arriba, texto abajo en móvil */
+        padding: 0 20px;
+    }
+    .hero-text {
+        text-align: center;
+        margin-top: 30px;
+    }
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    .hero-text .subtitle {
+        font-size: 1.2rem;
+    }
+    .profile-image-hero {
+        width: 200px;
+        height: 200px;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .achievements-grid {
+        grid-template-columns: 1fr; /* Una columna en móvil */
+    }
+}
+
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
+
+/* Estilos específicos para la página de Perfil */
+
+.page-hero {
+    min-height: 40vh; /* Usar min-height para flexibilidad, ajusta según necesites */
+    /* El background con gradiente ya está bien para el efecto de overlay */
+    background: linear-gradient(rgba(26, 26, 46, 0.8), rgba(22, 36, 71, 0.8)), url('placeholder-uniandes.jpg') no-repeat center center/cover;
+    display: flex;
+    flex-direction: column; /* Para centrar verticalmente si hay múltiples elementos */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative; /* Para el .hero-overlay si decides usarlo por separado */
+    padding: 40px 20px; /* Añadimos un padding interno para el contenido */
+    /* No necesita z-index aquí, ya que es contenido normal del main */
+}
+
+.hero-content-simple {
+    position: relative; /* Para asegurar que esté sobre el .hero-overlay si se usa uno separado */
+    z-index: 2; /* Si usas .hero-overlay */
+    /* No es necesario un overlay separado si el background-image con gradiente ya lo hace */
+}
+
+.hero-content-simple h1 {
+    font-size: 2.8rem; /* Ajustado ligeramente */
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.hero-content-simple p {
+    font-size: 1.2rem; /* Ajustado ligeramente */
+    color: #e0e0e0; /* Más claro para mejor contraste */
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+#profile-details {
+    padding-top: 40px; /* Mantenemos un padding interno en la primera sección de contenido */
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 300px 1fr; /* Sidebar y contenido principal */
+    gap: 40px;
+}
+
+.profile-sidebar {
+    background-color: #1f3061; /* Azul más oscuro, igual que achievement-item */
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    align-self: flex-start; /* Para que no se estire si el contenido principal es más largo */
+}
+
+.profile-image-page {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #00aaff;
+    margin-bottom: 20px;
+    object-fit: cover;
+}
+
+.profile-sidebar h3 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.profile-sidebar p {
+    font-size: 0.95rem;
+    margin-bottom: 12px; /* Un poco más de espacio vertical si es necesario */
+    color: #e0e0e0;
+    /* text-align: left; Ya lo tenías, es bueno */
+
+    /* --- NUEVOS ESTILOS FLEXBOX --- */
+    display: flex; /* Activa Flexbox para el párrafo */
+    align-items: flex-start; /* Alinea el ícono y el inicio del texto verticalmente arriba */
+                            /* Podrías usar 'center' si prefieres centrado vertical con el ícono */
+}
+
+.profile-sidebar p i {
+    color: #00aaff;
+    margin-right: 10px;
+    width: 20px; /* Ancho fijo para el ícono ayuda a la alineación */
+    flex-shrink: 0; /* Evita que el ícono se encoja si el texto es largo */
+    margin-top: 2px; /* Pequeño ajuste para alinear mejor con la línea base del texto, puede variar según la fuente y el tamaño del ícono */
+}
+
+.profile-sidebar p a,
+.profile-sidebar p span { /* Para el texto que no es un enlace, como el ORCID */
+    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+    word-break: break-all; /* Opción más agresiva si el email es muy largo y no hay espacio */
+                           /* Considera 'overflow-wrap: break-word;' como una alternativa menos agresiva */
+    /* Si el email sigue cortándose, asegúrate que el .profile-sidebar tiene suficiente ancho */
+}
+
+/* Específicamente para el enlace del email y el ORCID, para que se comporten bien con flex */
+.profile-sidebar p a[href^="mailto:"],
+.profile-sidebar p span.orcid-text { /* Podrías añadir una clase al span del ORCID para ser específico */
+    display: inline-block; /* O block, dependiendo del efecto deseado */
+    /* word-break: break-all; ya está arriba */
+}
+
+
+.profile-main-content h2 {
+    text-align: left; /* Título de Resumen Ejecutivo alineado a la izquierda */
+    font-size: 2.2rem;
+    color: #80bfff;
+    margin-bottom: 20px;
+}
+.profile-main-content h2::after {
+   left: 0; /* Subrayado a la izquierda */
+   transform: translateX(0);
+   width: 60px;
+}
+
+
+.profile-main-content p {
+    margin-bottom: 15px;
+    color: #c0c0c0;
+}
+
+.section-subtitle {
+    font-size: 1.6rem;
+    color: #ffffff;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #1f3061; /* Separador sutil */
+}
+
+/* Estilos para la Línea de Tiempo */
+.timeline {
+    list-style-type: none;
+    position: relative;
+    padding-left: 30px; /* Espacio para la línea y los iconos */
+}
+
+.timeline::before { /* La línea vertical */
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #00aaff;
+    border-radius: 2px;
+}
+
+.timeline li {
+    margin-bottom: 30px;
+    position: relative;
+}
+
+.timeline-icon {
+    position: absolute;
+    left: -16px; /* Centrar el icono sobre la línea */
+    top: 0;
+    background-color: #1a1a2e; /* Color de fondo para que el icono destaque */
+    border: 3px solid #00aaff;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.timeline-icon i {
+    color: #00aaff;
+    font-size: 1.2rem;
+}
+
+.timeline-content {
+    padding-left: 35px; /* Espacio desde el icono al contenido */
+}
+
+.timeline-content h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 5px;
+}
+
+.timeline-content p {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-bottom: 0;
+}
+
+/* Sección de Contribuciones */
+#profile-contributions {
+    background-color: #162447;
+}
+
+.contributions-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.contribution-card {
+    background-color: #1f3061;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.contribution-card i {
+    font-size: 2.5rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+    align-self: center;
+}
+
+.contribution-card h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contribution-card p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    flex-grow: 1; /* Para que el texto ocupe el espacio y los botones se alineen abajo */
+    margin-bottom: 20px;
+}
+
+.link-arrow {
+    color: #80bfff;
+    text-decoration: none;
+    font-weight: 600;
+    align-self: flex-start; /* Alinea el enlace a la izquierda */
+    transition: color 0.3s ease;
+}
+
+.link-arrow:hover {
+    color: #00aaff;
+}
+
+.link-arrow i {
+    margin-left: 5px;
+    font-size: 0.9em;
+    transition: transform 0.3s ease;
+}
+.link-arrow:hover i {
+    transform: translateX(5px);
+}
+
+
+/* Ajustes responsivos para profile-grid */
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr; /* Sidebar encima del contenido principal */
+    }
+    .profile-sidebar {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-hero {
+        height: 40vh;
+    }
+    .hero-content-simple h1 {
+        font-size: 2.2rem;
+    }
+    .hero-content-simple p {
+        font-size: 1.1rem;
+    }
+    .profile-main-content h2 {
+        font-size: 1.8rem;
+    }
+    .section-subtitle {
+        font-size: 1.4rem;
+    }
+    .timeline {
+        padding-left: 20px;
+    }
+    .timeline-icon {
+        width: 30px;
+        height: 30px;
+        left: -15px;
+    }
+    .timeline-icon i {
+        font-size: 1rem;
+    }
+    .timeline-content {
+        padding-left: 25px;
+    }
+}
+
+
+/* DOCENCIA */
+
+/* Estilos específicos para la página de Docencia */
+
+#teaching-hero {
+    /* Hereda estilos de .page-hero, puedes particularizar el background-image si quieres */
+    background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-aula.jpg') no-repeat center center/cover;
+    /* Reemplaza placeholder-aula.jpg con una imagen de aula o estudiantes */
+}
+
+.section-bg-alt {
+    background-color: #162447; /* Alternar color de fondo para secciones */
+}
+
+/* Estilos para tarjetas de nuevos cursos y recursos */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: #1f3061;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 170, 255, 0.2);
+}
+
+.card-icon {
+    font-size: 2.5rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+.course-card .course-code {
+    font-size: 0.9rem;
+    color: #80bfff;
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.card p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    flex-grow: 1;
+    margin-bottom: 15px;
+}
+
+.btn-modal {
+    background-color: #00aaff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    align-self: flex-start;
+    transition: background-color 0.3s;
+}
+.btn-modal:hover {
+    background-color: #0088cc;
+}
+
+
+/* Estilos para Modales */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1500; /* Encima de todo */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; /* Scroll si el contenido es largo */
+    background-color: rgba(0,0,0,0.6); /* Fondo oscuro semi-transparente */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #1f3061; /* Color de fondo del modal */
+    margin: 5% auto;
+    padding: 30px;
+    border: 1px solid #00aaff;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 700px;
+    position: relative;
+    color: #e0e0e0;
+    animation: fadeInModal 0.5s;
+}
+
+@keyframes fadeInModal {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    color: #00aaff;
+    margin-bottom: 15px;
+}
+.modal-content p {
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+.modal-content p strong {
+    color: #80bfff;
+}
+
+
+/* Estilos para gráficos de desempeño */
+.performance-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.chart-container {
+    background-color: #1f3061;
+    padding: 20px;
+    border-radius: 8px;
+}
+.chart-container h3 {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+/* Estilos para highlights de proyectos y estudiantes */
+.project-highlight, .student-highlight {
+    background-color: #1f3061;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border-left: 5px solid #00aaff;
+}
+.project-highlight h4, .student-highlight h4 {
+    font-size: 1.2rem;
+    color: #e0e0e0;
+    margin-bottom: 8px;
+}
+.project-highlight h4 i, .student-highlight h4 i {
+    margin-right: 8px;
+    color: #00aaff;
+}
+.project-highlight p, .student-highlight p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+}
+
+.text-center {
+    text-align: center;
+}
+.text-center small a {
+    color: #80bfff;
+}
+
+
+/* Responsive para docencia */
+@media (max-width: 768px) {
+    .performance-charts {
+        grid-template-columns: 1fr;
+    }
+     #school-formation .profile-grid { /* Reutilizando la clase para layout similar */
+        grid-template-columns: 1fr;
+    }
+    #school-formation .profile-sidebar {
+        margin-top: 30px; /* Espacio si va debajo del contenido principal */
+    }
+}
+
+/* estilos docencia*/
+/* ... (estilos existentes) ... */
+
+/* Mejoras para la sección Cursos Impartidos */
+#courses-taught .section-intro {
+    max-width: 800px;
+    margin: 0 auto 30px auto; /* Centrado y con margen inferior */
+    text-align: center;
+    font-size: 1.05rem;
+    color: #c0c0c0;
+}
+
+#courses-taught .chart-display-area {
+    background-color: #1f3061; /* Fondo para el área del gráfico */
+    padding: 30px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+#courses-taught .courses-type-chart-container {
+    /* background-color se quita si chart-display-area ya lo tiene */
+    /* padding se quita si chart-display-area ya lo tiene */
+    border-radius: 6px; /* Bordes para el contenedor del canvas si se desea */
+    max-width: 700px; /* Limitar el ancho máximo del gráfico */
+    height: 400px; /* Altura fija para el gráfico */
+    margin: 0 auto 20px auto; /* Centrar el contenedor del gráfico */
+}
+/* Asegúrate que el canvas no se desborde */
+#courses-taught .courses-type-chart-container canvas {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+#courses-taught .chart-caption {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #b0b0b0;
+    max-width: 650px;
+    margin: 0 auto;
+}
+#courses-taught .chart-caption a {
+    color: #80bfff;
+    text-decoration: none;
+}
+#courses-taught .chart-caption a:hover {
+    text-decoration: underline;
+}
+
+#courses-taught .action-link-container {
+    margin-top: 20px; /* Espacio encima del botón */
+}
+
+/* Estilos para .btn-secondary si quieres añadir un ícono */
+.btn-secondary i {
+    margin-left: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+.btn-secondary:hover i {
+    transform: translateY(2px); /* Pequeño efecto al pasar el mouse */
+}
+
+
+/* Estilos para la sección #student-projects (solo para asegurar espaciado superior) */
+#student-projects {
+    padding-top: 80px; /* Asegura que haya espacio al hacer scroll desde el anclaje */
+    margin-top: -0px; /* Compensa el padding de la sección general para que el anclaje sea más preciso */
+                               /* Ajusta este valor según sea necesario */
+}
+
+/* ... (estilos existentes) ... */
+
+/* Estilos para la sección audiovisual-resources (aseguramos padding inferior) */
+#audiovisual-resources {
+    padding-bottom: 60px; /* O el valor que ya tengas para padding en secciones */
+}
+
+/* Estilos para la sección teaching-performance */
+#teaching-performance {
+    /* background-color: #162447; ya lo tienes con .section-bg-alt */
+    /* padding: 60px 0; ya lo tienes con .container y section general */
+    margin-top: 60px; /* <--- AÑADE O AJUSTA ESTA LÍNEA */
+}
+
+/* Si quieres que todas las .section-bg-alt tengan un margen superior
+   para separarlas de la sección anterior (si la anterior no tiene fondo alterno),
+   podrías hacer esto en lugar de apuntar al ID específico: */
+/*
+.section-bg-alt {
+    background-color: #162447;
+    margin-top: 60px;
+}
+*/
+/* Y si una sección normal sigue a una .section-bg-alt,
+   quizás también necesite un margin-top si no quieres que se peguen.
+   Por eso, a veces es mejor ser específico con los IDs o clases
+   o asegurar que todas las secciones tengan un margin-bottom.
+*/
+
+/* O una solución más general sería que TODAS las secciones tengan un margen inferior,
+   excepto quizás la última */
+section {
+    padding: 60px 0;
+    margin-bottom: 30px; /* Espacio general entre secciones */
+}
+/* Y luego podrías quitar el margin-bottom de la última sección si es necesario */
+main section:last-child {
+    margin-bottom: 0;
+}
+
+
+/* ... (resto de los estilos de #teaching-performance que ya tenías) ... */
+.performance-charts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+.chart-container {
+    background-color: #1f3061;
+    padding: 20px;
+    border-radius: 8px;
+    height: 450px; /* ¡AÑADE ESTO! Ajusta el valor según tu preferencia (e.g., 300px, 400px) */
+    /* Opcionalmente, en lugar de 'height', podrías usar 'aspect-ratio': */
+    /* aspect-ratio: 16 / 9; */ /* O cualquier otra relación que prefieras, ej. 4 / 3, 2 / 1 */
+    /* Es importante que si usas 'height', el contenedor sea lo suficientemente ancho
+       para que la gráfica no se vea demasiado comprimida horizontalmente.
+       Con minmax(400px, 1fr) en el grid, esto debería estar bien. */
+}
+.chart-container h3 {
+    text-align: center;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+/* ==========================================================================
+   Estilos Específicos por Sección (investigacion.html)
+   ========================================================================== */
+
+   #research-hero {
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-investigacion-bg.jpg');
+    /* Reemplaza con una imagen de fondo relevante para investigación */
+}
+
+#research-overview .research-pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px; /* Después del h2 */
+}
+
+#research-overview .pillar {
+    text-align: center;
+    padding: 20px;
+    background-color: #1f3061; /* Similar a las tarjetas */
+    border-radius: 8px;
+}
+
+#research-overview .pillar i {
+    font-size: 2.5rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+}
+
+#research-overview .pillar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+#research-overview .pillar p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+}
+
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Para centrar con margin auto si es necesario */
+    margin-left: auto;
+    margin-right: auto;
+}
+.caption-text {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    text-align: center;
+    margin-top: 5px;
+}
+
+#research-impact .impact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    /* .achievement-item ya tiene estilos */
+}
+
+/* Publicaciones */
+#publications .filters {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    background-color: #1f3061;
+    padding: 15px;
+    border-radius: 6px;
+}
+#publications .filters label {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+#publications .filters select,
+#publications .filters input[type="text"] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+    background-color: #2a3b70;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+#publications .filters input[type="text"] {
+    flex-grow: 1; /* Para que ocupe el espacio restante */
+    min-width: 200px;
+}
+
+.publications-list {
+    list-style: none;
+    padding-left: 0;
+}
+.publications-list li {
+    background-color: #1f3061;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border-left: 5px solid #00aaff;
+    transition: box-shadow 0.3s ease;
+}
+.publications-list li:hover {
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.2);
+}
+.publications-list li.highlight-publication { /* Para destacar una publicación clave */
+    border-left-color: #ffc107; /* Amarillo para destacar */
+    background-color: #2a3b70; /* Un poco más claro */
+}
+
+.publications-list .pub-authors {
+    display: block;
+    font-size: 0.9rem;
+    color: #c0c0c0;
+    margin-bottom: 5px;
+}
+.publications-list .pub-authors strong { /* Para resaltar estudiantes */
+    color: #80bfff;
+    font-weight: 600;
+}
+.publications-list .pub-title {
+    display: block;
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: #e0e0e0;
+    margin-bottom: 5px;
+}
+.publications-list .pub-journal {
+    display: block;
+    font-style: italic;
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    margin-bottom: 8px;
+}
+.publications-list .pub-link {
+    font-size: 0.9rem;
+    color: #00aaff;
+    text-decoration: none;
+}
+.publications-list .pub-link:hover {
+    text-decoration: underline;
+}
+.publications-list .pub-link i {
+    margin-right: 5px;
+}
+
+/* Proyecto SGR */
+#sgr-project .section-intro-text { /* Párrafo introductorio para esta sección */
+    max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 30px; color: #c0c0c0; font-size: 1.05rem;
+}
+#sgr-project .sgr-details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    align-items: center; /* Alinear verticalmente si las alturas son diferentes */
+}
+#sgr-project .sgr-video iframe {
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-width: 100%; /* Asegurar responsividad del iframe */
+}
+
+/* Proyectos Cards */
+#research-projects .project-cards .card {
+    /* Hereda de .card, pero podemos añadir particularidades */
+    min-height: 280px; /* Para igualar alturas si el contenido varía mucho */
+}
+#research-projects .project-cards .card h3 {
+    font-size: 1.2rem;
+}
+#research-projects .project-cards .card p {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+#research-projects .project-cards .card p strong {
+    color: #80bfff;
+}
+
+
+/* Internacionalización y Charlas Invitadas */
+#internationalization .section-intro-text { /* Similar al de SGR */
+    max-width: 800px; margin-left: auto; margin-right: auto; text-align: center; margin-bottom: 30px; color: #c0c0c0; font-size: 1.05rem;
+}
+
+.talks-list {
+    list-style: none;
+    padding-left: 0;
+}
+.talks-list li {
+    background-color: #1f3061;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: flex-start;
+}
+.talks-list .talk-year {
+    background-color: #00aaff;
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    flex-shrink: 0; /* Para que no se encoja */
+}
+.talks-list .talk-title {
+    font-weight: 600;
+    color: #e0e0e0;
+    flex-grow: 1; /* Ocupa el espacio disponible */
+}
+.talks-list .talk-event {
+    font-size: 0.9rem;
+    color: #a0a0a0;
+    width: 100%; /* Para que ocupe toda la línea si es largo */
+    margin-top: 5px;
+}
+
+/* Ajustes responsivos para investigación */
+@media (max-width: 768px) {
+    #research-overview .research-pillars { grid-template-columns: 1fr; }
+    #research-impact .impact-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    #research-impact .achievement-item .counter { font-size: 2rem; }
+    #research-impact .achievement-item p { font-size: 0.9rem; }
+
+    #publications .filters { flex-direction: column; align-items: stretch; }
+    #publications .filters select,
+    #publications .filters input[type="text"] { width: 100%; }
+
+    #sgr-project .sgr-details-grid { grid-template-columns: 1fr; }
+
+    .talks-list li { flex-direction: column; }
+    .talks-list .talk-year { margin-bottom: 5px; align-self: flex-start; }
+}
+
+/* ==========================================================================
+   Estilos Específicos por Sección (institucional.html)
+   ========================================================================== */
+
+   #institutional-hero {
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-uniandes-edificio.jpg');
+    /* Reemplaza con una imagen de la universidad, un edificio emblemático, etc. */
+}
+
+/* Párrafos introductorios generales para esta página */
+#coordination-summary .section-intro-text,
+#lab-coordination .container > .section-intro-text, /* Si el container está dentro de la sección con fondo */
+#postgraduate-coordination .container > .section-intro-text,
+#community-engagement .container > .section-intro-text {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 30px; /* Espacio después del párrafo y antes del contenido principal de la sección */
+    color: #c0c0c0;
+    font-size: 1.05rem;
+}
+
+
+/* Estilos para la tabla de resumen de coordinaciones */
+.table-container {
+    overflow-x: auto; /* Para responsividad de tablas */
+    margin-top: 30px; /* Después del párrafo introductorio */
+    background-color: #1f3061; /* Fondo para la tabla */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.responsive-table table {
+    width: 100%;
+    border-collapse: collapse;
+    color: #e0e0e0;
+}
+
+.responsive-table th, .responsive-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #2a3b70; /* Línea sutil entre filas */
+}
+
+.responsive-table th {
+    background-color: #2a3b70; /* Fondo para encabezados de tabla */
+    color: #00aaff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+}
+
+.responsive-table tbody tr:hover {
+    background-color: #253758; /* Efecto hover en filas */
+}
+
+/* Estilos para la sección de Liderazgo en Posgrado con imágenes */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature-item {
+    background-color: #1f3061;
+    border-radius: 8px;
+    overflow: hidden; /* Para que el border-radius afecte a la imagen */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    display: flex; /* Para layout interno si es necesario, o simplemente para el fondo */
+    flex-direction: column;
+}
+
+.feature-image {
+    width: 100%;
+    height: 250px; /* Altura fija para las imágenes de feature */
+    object-fit: cover; /* Para que la imagen cubra sin distorsionarse */
+}
+
+.feature-text {
+    padding: 20px;
+}
+
+.feature-text h3 {
+    font-size: 1.3rem;
+    color: #00aaff;
+    margin-bottom: 10px;
+}
+.feature-text h3 i {
+    margin-right: 8px;
+}
+
+.feature-text p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+}
+
+/* Estilos para la sección de Compromiso Comunitario */
+#community-engagement .engagement-highlights {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.engagement-item {
+    background-color: #1f3061;
+    padding: 25px;
+    border-radius: 8px;
+    text-align: center; /* Centrar icono y título */
+}
+
+.engagement-item i {
+    font-size: 2.8rem;
+    color: #00aaff;
+    margin-bottom: 15px;
+}
+
+.engagement-item h3 {
+    font-size: 1.25rem;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.engagement-item p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    text-align: left; /* Párrafos justificados o a la izquierda para mejor lectura */
+}
+
+/* Ajustes responsivos para institucional.html */
+@media (max-width: 768px) {
+    .feature-grid {
+        grid-template-columns: 1fr; /* Una columna para features en móvil */
+    }
+    .feature-image {
+        height: 200px; /* Ajustar altura de imagen en móvil */
+    }
+    #community-engagement .engagement-highlights {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ==========================================================================
+   Estilos Específicos por Sección (vision.html)
+   ========================================================================== */
+
+   #vision-hero {
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-vision-bg.jpg');
+    /* Reemplaza con una imagen de fondo inspiradora o abstracta que represente el futuro/visión */
+}
+
+/* Sección de Reflexión */
+#reflection .quote-block {
+    background-color: #1f3061;
+    border-left: 5px solid #00aaff;
+    margin: 30px auto;
+    padding: 20px 30px;
+    max-width: 900px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#reflection .quote-block p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+#reflection .quote-block footer {
+    text-align: right;
+    font-weight: 600;
+    color: #80bfff;
+    font-size: 1rem;
+}
+
+#reflection .reflection-text {
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    font-size: 1.05rem;
+    color: #c0c0c0;
+    text-align: justify; /* Para un look más formal de reflexión */
+}
+#reflection .reflection-text em { /* Para ataraxia profesional */
+    color: #00aaff;
+    font-style: normal;
+    font-weight: 600;
+}
+
+/* Sección Argumento para Titularidad */
+#titularity-argument .section-intro-text,
+#future-commitments .section-intro-text {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 40px; /* Más espacio antes de los puntos */
+    color: #c0c0c0;
+    font-size: 1.1rem;
+}
+
+.argument-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.argument-point {
+    background-color: #1f3061; /* Mismo color que tarjetas */
+    padding: 25px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start; /* Alinear icono y texto arriba */
+    gap: 20px;
+}
+
+.argument-point .point-icon {
+    font-size: 2.2rem;
+    color: #00aaff;
+    margin-top: 5px; /* Pequeño ajuste vertical */
+    flex-shrink: 0;
+}
+
+.argument-point .point-text h3 {
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.argument-point .point-text p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    line-height: 1.6;
+}
+
+/* Sección Visión y Compromisos */
+.commitment-areas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.commitment-area {
+    background-color: #1f3061; /* Mismo color que tarjetas */
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.commitment-area .area-icon {
+    font-size: 3rem;
+    color: #00aaff;
+    margin-bottom: 20px;
+}
+
+.commitment-area h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.commitment-area p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    text-align: left; /* Para mejor legibilidad de los párrafos */
+    line-height: 1.7;
+}
+
+#future-commitments .closing-statement {
+    margin-top: 40px;
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #e0e0e0;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    line-height: 1.8;
+}
+
+/* Ajustes responsivos para vision.html */
+@media (max-width: 768px) {
+    #reflection .quote-block {
+        margin-left: 10px;
+        margin-right: 10px;
+        padding: 15px 20px;
+    }
+    #reflection .quote-block p {
+        font-size: 1rem;
+    }
+    .argument-points, .commitment-areas {
+        grid-template-columns: 1fr;
+    }
+    .argument-point {
+        flex-direction: column; /* Icono encima del texto en móvil */
+        text-align: center;
+    }
+    .argument-point .point-icon {
+        margin: 0 auto 15px auto; /* Centrar icono */
+    }
+    .argument-point .point-text {
+        text-align: left;
+    }
+}
+/* ... (Estilos existentes de .modal y .modal-content) ... */
+
+.modal-content h3 {
+    color: #00aaff;
+    margin-bottom: 20px; /* Más espacio después del título principal */
+    font-size: 1.6rem; /* Un poco más grande */
+}
+
+.modal-content p {
+    margin-bottom: 12px; /* Ajustar espacio entre párrafos */
+    line-height: 1.7;
+}
+.modal-content p strong {
+    color: #80bfff; /* Color para los 'labels' como Nivel, etc. */
+}
+
+.modal-subtitle { /* Nuevo estilo para subtítulos dentro del modal */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1rem;
+    color: #00aaff; /* Mismo color que el título principal del modal */
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #2a3b70; /* Una línea sutil debajo */
+    padding-bottom: 4px;
+}
+
+.modal-content ul {
+    list-style-position: outside;
+    padding-left: 20px; /* Indentación para la lista */
+    margin-bottom: 15px;
+}
+
+.modal-content ul li {
+    margin-bottom: 6px;
+    color: #c0c0c0; /* Color para los ítems de la lista */
+}
+
+/* ==========================================================================
+   Estilos Específicos para Formación de Escuela (docencia.html)
+   ========================================================================== */
+
+   #school-formation .section-intro-text { /* Reutilizando o definiendo si no existe */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #c0c0c0;
+    font-size: 1.05rem;
+}
+
+.school-formation-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Por defecto una columna */
+    gap: 40px;
+}
+
+@media (min-width: 992px) { /* Para pantallas más grandes, dos columnas */
+    .school-formation-grid {
+        grid-template-columns: 450px 1fr; /* Columna para el gráfico y el resto para estudiantes */
+        align-items: flex-start; /* Alinear al inicio si tienen alturas diferentes */
+    }
+}
+
+.thesis-distribution-chart-area,
+.featured-students-area {
+    background-color: #1f3061; /* Fondo para estas sub-secciones */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.thesis-distribution-chart-area h3,
+.featured-students-area h3 {
+    text-align: center;
+    color: #00aaff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+.thesis-distribution-chart-area > p { /* Párrafo de "Total: 26 Tesis" */
+    text-align: center;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+.thesis-distribution-chart-area .chart-caption {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #b0b0b0;
+    margin-top: 15px;
+}
+
+
+.student-filter-controls {
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    background-color: #2a3b70; /* Fondo ligeramente diferente para los controles */
+    border-radius: 6px;
+}
+.student-filter-controls label {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+.student-filter-controls select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+    background-color: #1a1a2e; /* Fondo del select */
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+
+.featured-students-container {
+    /* Contenedor para las tarjetas de estudiantes */
+    /* Puedes añadir un max-height y overflow-y: auto; si la lista es muy larga */
+}
+
+.student-card {
+    background-color: #2a3b70; /* Un poco más claro que el contenedor general de estudiantes */
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    border-left: 5px solid #00aaff;
+    transition: box-shadow 0.3s ease;
+}
+.student-card:hover {
+    box-shadow: 0 0 15px rgba(0, 170, 255, 0.2);
+}
+.student-card:last-child {
+    margin-bottom: 0;
+}
+
+.student-card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.student-icon {
+    font-size: 1.8rem;
+    color: #00aaff;
+    margin-right: 15px;
+    width: 30px; /* Para alinear */
+    text-align: center;
+}
+
+.student-card-header h4 {
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 0;
+}
+
+.student-level-tag {
+    display: inline-block;
+    background-color: #00aaff;
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 10px;
+    margin-left: 10px;
+    font-weight: normal;
+    vertical-align: middle;
+}
+
+.student-card p {
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+.student-card p strong {
+    color: #e0e0e0;
+}
+.student-card .student-publications {
+    font-size: 0.85rem;
+    color: #a0a0a0;
+    font-style: italic;
+}
+
+/* Para ocultar tarjetas que no coinciden con el filtro */
+.student-card.hidden-by-filter {
+    display: none;
+}
+
+/* ... (otros estilos de .card) ... */
+
+.card.highlight-recognition {
+    background-color: #2a3b70; /* Un fondo ligeramente diferente, o el mismo que .section-bg-alt */
+    border: 2px solid #00aaff; /* Un borde más prominente */
+    /* O podrías usar un box-shadow más intenso: */
+    /* box-shadow: 0 0 20px rgba(0, 170, 255, 0.4); */
+}
+
+.card.highlight-recognition .card-icon i {
+    color: #ffd700; /* Color dorado para el icono, por ejemplo */
+}
+
+/* ... (estilos existentes) ... */
+
+/* Filtros para Charlas (pueden reutilizar estilos de .filters de publicaciones si son iguales) */
+.talks-filters {
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+    background-color: #1f3061; /* Consistente con filtros de publicaciones */
+    padding: 15px;
+    border-radius: 6px;
+}
+.talks-filters label {
+    font-weight: 600;
+    color: #e0e0e0;
+}
+.talks-filters select,
+.talks-filters input[type="text"] {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #007bff;
+    background-color: #2a3b70;
+    color: #e0e0e0;
+    font-size: 0.95rem;
+}
+.talks-filters input[type="text"] {
+    flex-grow: 1;
+    min-width: 200px;
+}
+
+/* Estilos para la lista de charlas (ya deberían existir, pero por completitud) */
+.talks-list {
+    list-style: none;
+    padding-left: 0;
+}
+.talks-list li {
+    background-color: #1f3061;
+    padding: 15px 20px; /* Aumentar padding para más espacio */
+    margin-bottom: 12px; /* Un poco más de espacio entre charlas */
+    border-radius: 6px;
+    /* display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; -- Lo manejaremos con divs internos */
+    border-left: 4px solid #00aaff; /* Borde izquierdo distintivo */
+    transition: box-shadow 0.3s ease;
+}
+.talks-list li:hover {
+    box-shadow: 0 0 12px rgba(0, 170, 255, 0.15);
+}
+
+.talks-list .talk-meta { /* Contenedor para año y fecha */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: #a0a0a0;
+}
+.talks-list .talk-year-badge { /* Similar al .talk-year anterior pero más como badge */
+    background-color: #00aaff;
+    color: #fff;
+    padding: 3px 10px;
+    border-radius: 12px; /* Más redondeado */
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.talks-list .talk-date {
+    font-style: italic;
+}
+.talks-list .talk-title {
+    font-weight: 600;
+    font-size: 1.1rem; /* Un poco más grande */
+    color: #e0e0e0;
+    margin-bottom: 5px;
+    display: block; /* Para que ocupe su línea */
+}
+.talks-list .talk-event-location { /* Para evento y ubicación en una línea */
+    font-size: 0.95rem;
+    color: #c0c0c0;
+    display: block;
+}
+.talks-list .talk-event-location i { /* Ícono para la ubicación */
+    margin-right: 6px;
+    color: #80bfff;
+}
+
+/* ... (estilos existentes del .timeline) ... */
+
+.timeline li.timeline-highlight-item .timeline-icon {
+    border-color: #ffd700; /* Borde dorado para el ícono destacado */
+    background-color: #2a3b70; /* Un fondo ligeramente diferente si quieres */
+}
+
+.timeline li.timeline-highlight-item .timeline-icon i {
+    color: #ffd700; /* Ícono dorado */
+}
+
+.timeline li.timeline-highlight-item .timeline-content h4 {
+    color: #ffd700; /* Título en dorado */
+    /* font-weight: bold; Si quieres más énfasis */
+}
+
+.timeline li.timeline-highlight-item .timeline-content {
+    /* Podrías añadir un borde o un fondo sutil si lo deseas mucho */
+    /* background-color: rgba(255, 215, 0, 0.05); */ /* Fondo dorado muy sutil */
+    /* border-left: 3px solid #ffd700; */ /* Un borde izquierdo diferente */
+}
+
+.timeline-content p.timeline-date { /* Estilo opcional para la fecha/estado */
+    font-size: 0.85rem;
+    color: #b0b0b0; /* Un gris un poco más claro o diferente */
+    font-style: italic;
+    margin-top: 4px;
+}
+
+/* En style.css */
+
+/* ... (otros estilos) ... */
+
+.chart-container-sgr {
+    background-color: #1f3061;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+    /* --- AÑADE O AJUSTA LA ALTURA AQUÍ --- */
+    height: 450px; /* Ejemplo: Ajusta este valor según necesites */
+    /* O podrías usar min-height si quieres que se expanda si hay muchas barras */
+    /* min-height: 400px; */
+    position: relative; /* A veces necesario para que Chart.js calcule bien el tamaño */
+}
+
+.chart-container-sgr h3 {
+    text-align: center;
+    font-size: 1.1rem; /* Tamaño del título del gráfico */
+    margin-bottom: 15px;
+    color: #e0e0e0;
+}
+
+#sgrDistributionChart { /* El canvas en sí */
+    max-width: 100%; /* Para que sea responsivo */
+    /* La altura se maneja mejor con maintainAspectRatio: false y la altura del contenedor si es necesario */
+}
+
+
+/* En style.css, dentro o después de los estilos de #introduction */
+
+#introduction p.intro-text-lead {
+    font-size: 1.15rem; /* Un poco más grande para el párrafo principal */
+    font-weight: 600;
+    color: #e0e0e0;
+    max-width: 850px;
+    margin: 0 auto 20px auto; /* Centrado y con margen inferior */
+}
+
+#introduction p.intro-text-complement {
+    font-size: 1.05rem;
+    max-width: 800px;
+    margin: 0 auto 20px auto;
+    color: #c0c0c0;
+    line-height: 1.7;
+}
+
+#introduction p.intro-text-complement strong {
+    color: #00aaff; /* Resaltar la palabra "complemento" */
+    font-weight: 700;
+}
+
+#introduction a.dossier-link-inline { /* Estilo para el enlace al dossier dentro del texto */
+    color: #80bfff;
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px dotted #80bfff;
+    transition: color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+#introduction a.dossier-link-inline:hover {
+    color: #00aaff;
+    border-bottom-color: #00aaff;
+}
+
+#introduction p.intro-text-synergy {
+    font-size: 1.05rem;
+    max-width: 800px;
+    margin: 0 auto;
+    color: #c0c0c0;
+    font-style: italic;
+}

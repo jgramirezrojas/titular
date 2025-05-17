@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investigación - Juan Gabriel Ramírez</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script> <!-- O la versión más reciente -->
+    <!-- Para mapa interactivo (opcional) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" /> 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> 
+
+
+    <!-- Plugin de anotaciones (si lo sigues usando para otros gráficos) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/2.2.1/chartjs-plugin-annotation.min.js"></script>
+    <!-- Plugin DataLabels (para mostrar valores en las barras) -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0/dist/chartjs-plugin-datalabels.min.js"></script> <!-- Usando versión 2.2.0 como ejemplo estable -->
+    <!-- ... tu script.js irá al final del body o también en el head si usas defer -->
+
+
+
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Prof. Juan Gabriel Ramírez</a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="perfil.html">Perfil</a></li>
+                <li><a href="docencia.html">Docencia</a></li>
+                <li><a href="investigacion.html" class="active">Investigación</a></li>
+                <li><a href="institucional.html">Desarrollo Institucional</a></li>
+                <li><a href="vision.html">Visión y Reflexión</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="research-hero" class="page-hero">
+            <div class="hero-content-simple">
+                <h1>Investigación y Producción Académica</h1>
+                <p>Explorando la frontera del nanomagnetismo y los materiales multifuncionales.</p>
+            </div>
+        </section>
+
+        <section id="research-overview" class="container">
+            <h2>Características de Mi Investigación</h2>
+            <div class="research-pillars">
+                <div class="pillar">
+                    <i class="fas fa-atom"></i>
+                    <h3>Integración Teórico-Experimental-Computacional</h3>
+                    <p>Abordo fenómenos físicos complejos desde múltiples ángulos, validando resultados experimentales con modelos teóricos y simulaciones.</p>
+                </div>
+                <div class="pillar">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3>Enfoque Interdisciplinario</h3>
+                    <p>Mi trabajo integra física del estado sólido, ciencia de materiales y nanotecnología, formando investigadores con competencias transversales.</p>
+                </div>
+                <div class="pillar">
+                    <i class="fas fa-search-plus"></i>
+                    <h3>Rigor Crítico y Escepticismo Científico</h3>
+                    <p>Fomento una cultura de "duda constructiva", evaluando rigurosamente resultados propios y la literatura existente.</p>
+                </div>
+            </div>
+            <div class="text-center" style="margin-top: 30px;">
+                <img src="figures/placeholder-figura-5-2.png" alt="Esquema de temas de investigación" class="responsive-image" style="max-width: 600px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+                <p class="caption-text" style="margin-top:10px;">Figura 5.2: Esquema de temas de investigación (Dossier).</p>
+            </div>
+        </section>
+
+        <section id="research-impact">
+            <div class="container container-with-alt-bg">
+                <h2>Impacto de Mi Investigación: Análisis Bibliométrico</h2>
+                <div class="impact-grid">
+                    <div class="impact-metric achievement-item"> <!-- Reutilizando estilo .achievement-item -->
+                        <i class="fas fa-chart-bar"></i>
+                        <div class="counter" data-target="2758">0</div>
+                        <p>Citaciones Totales</p>
+                    </div>
+                    <div class="impact-metric achievement-item">
+                        <i class="fas fa-star"></i>
+                        <div class="counter" data-target="23">0</div>
+                        <p>Índice H Total</p>
+                    </div>
+                    <div class="impact-metric achievement-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <div class="counter" data-target="1671">0</div>
+                        <p>Citaciones desde 2020 (60.6%)</p>
+                    </div>
+                    <div class="impact-metric achievement-item">
+                        <i class="fas fa-arrow-trend-up"></i>
+                        <div class="counter" data-target="19">0</div>
+                        <p>Índice H Reciente (desde 2020)</p>
+                    </div>
+                </div>
+                <div class="chart-container" style="max-width: 800px; height: 400px; margin: 40px auto 0 auto; background-color: #1f3061; padding:20px; border-radius:8px;">
+                    <h3>Crecimiento de Citaciones (Figura 5.3.1)</h3>
+                    <canvas id="citationsGrowthChart"></canvas>
+                </div>
+                <p class="text-center" style="margin-top:30px;">Análisis comparativos detallados con estándares disciplinares y colegas se encuentran en el <a href="ascenso_2025_v2_Mayo13.pdf" target="_blank">Dossier (Sección 5.10)</a>.</p>
+                <p>&nbsp;</p>  
+            </div>
+        </section>
+
+        <section id="publications" class="container">
+            <h2>Publicaciones Destacadas (desde 2015)</h2>
+            <div class="filters">
+                <label for="year-filter">Filtrar por Año:</label>
+                <select id="year-filter">
+                    <option value="all">Todos</option>
+                    <option value="2025" selected>2025</option>
+                    <option value="2024">2024</option>
+                    <option value="2023">2023</option>
+                    <option value="2022">2022</option>
+                    <option value="2021">2021</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018">2018</option>
+                    <option value="2017">2017</option>
+                    <option value="2016">2016</option>
+                    <option value="2015">2015</option>
+                </select>
+                <input type="text" id="search-filter" placeholder="Buscar por título o autor...">
+            </div>
+            <ul id="publications-list" class="publications-list">
+                <!-- 2025 -->
+                <li data-year="2025">
+                    <span class="pub-authors">G. B. Gomide (CE), <strong>D. Carranza-Celis (ED)</strong>, G. Kuhl (EM-Externo), M. Knobel (CE), J.G. Ramírez, D. Muraca (CE)</span>
+                    <span class="pub-title">Voltage-Tunable Spin Resonance in Quantum Phase-Separated Material.</span>
+                    <span class="pub-journal">APL Mater. 13, 041122 (2025).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2025">
+                    <span class="pub-authors">S. Ceballos Medina (EM-Externo), L. Marín Mercado (CE), <strong>A. Cardona-Rodríguez (ED/AI)</strong>, M. F. Quiñonez Penago (CE), C. Magén (CE), L. A. Rodríguez (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Resistive switching mechanisms in BiFeO₃ devices with YBCO and Ag as top electrodes.</span>
+                    <span class="pub-journal">Physics Open 22, 100249 (2025).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2025">
+                    <span class="pub-authors">A. J. Echeverri R (CE), <strong>M. Sánchez (EP)</strong>, L. T. Amaya (CE), L. V. Giróna (CE), J.G. Ramírez, <strong>A. Cardona-Rodríguez (ED/AI)</strong>, J. A. Tabares (CE), G. A. Pérez Alcázar (CE), H. D. Colorado (CE), J. L. Valenzuela (CE), F. Maccari (CE), J. S. Trujillo Hernandez (CE)</span>
+                    <span class="pub-title">The effect of Cu on phase stability and magnetic properties of τ-MnAl: A comparative study of Mn₅₅₋ₓAl₄₅Cuₓ and Mn₅₅Al₄₅₋ₓCuₓ (x = 0.0, 2.0, 2.5) alloys.</span>
+                    <span class="pub-journal">Heliyon 11, e42952 (2025).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2024 -->
+                <li data-year="2024">
+                    <span class="pub-authors">Y. A. Orozco-Osorio (CE), A. V. Gaita-Anturi (CE), C. P. Ossa-Orozco (CE), M. Arias-Acevedo (CE), D. Uribe (CE), C. Paucar (CE), A. F. Vasquez (CE), W. Saldarriaga (CE), J.G. Ramírez, A. Lopera (CE), C. García (CE)</span>
+                    <span class="pub-title">Utilization of Additive Manufacturing Techniques for the Development of a Novel Scaffolds with Magnetic Properties for Potential Application in Enhanced Bone Regeneration.</span>
+                    <span class="pub-journal">Small, 2402419 (2024).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2024">
+                    <span class="pub-authors"><strong>D. Carranza-Celis (ED)</strong>, C. Wolowiec (CE), A. C. Basaran (CE), P. Salev (CE), I. K. Schuller (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Low-temperature paramagnetic phase reentrance in praseodymium-doped manganites.</span>
+                    <span class="pub-journal">Phys. Rev. Mater. 8, 054401 (2024).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2023 -->
+                <li data-year="2023">
+                    <span class="pub-authors"><strong>S. Correal (EP)</strong>, <strong>D. Hernández-Gómez (EM)</strong>, <strong>A. S. Esquivel (EP)</strong>, <strong>A. Cardona-Rodríguez (ED)</strong>, A. Reiber (CU), Y. Hernandez (CU), R. González-Hernández (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Tuning electronic and magnetic properties through disorder in V₂O₅ nanoparticles.</span>
+                    <span class="pub-journal">Sci. Rep. 13, 6752 (2023).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2023">
+                    <span class="pub-authors">Y. Orozco (CE), A. Betancur (CE), E. Chavarriaga (CE), J.G. Ramírez, R. Moreno (CE), J. Palacio (CE), S. Leal-Marin (CE), B. Glasmacher (CE), O. Gryshkov (CE), C. Paucar (CE), C. Garcia (CE), & A. Lopera (CE)</span>
+                    <span class="pub-title">Influence of NaCl on Magnetic Properties of MgFe₂O₄ Nanoparticles Synthesized by Gel Combustion.</span>
+                    <span class="pub-journal">Int. J. Self-Propag. High-Temp. Synth. 32(2), 139–149 (2023).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2022 -->
+                <li data-year="2022">
+                    <span class="pub-authors"><strong>A. Cardona Rodríguez (ED)</strong>, A. Reiber (CU), I. K. Schuller (CE), D. Muraca (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Evidence of a glassy magnetic transition driven by structural disorder in BiFeO₃ nanoparticles.</span>
+                    <span class="pub-journal">J. Magn. Magn. Mater. 563, 169917 (2022).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2022">
+                    <span class="pub-authors">J. Wampler (CE), N. Hua (CE), R. Kukreja (CE), J.G. Ramírez, A. C. Basaran (CE), E. E. Fullerton (CE), O. Shpyrko (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">The Electromagnetic Origin of the Microwave Absorption Response of Fe₃O₄ Thin Films.</span>
+                    <span class="pub-journal">Phys. Rev. B 106, L060402 (2022).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2022">
+                    <span class="pub-authors">Fernandes, H., Rossa (CE), P. A. M., Santos (CE), M., Henriques, R. (CE), Enders, B. G. (CE), de Brito, P. E. (CE), Gomez-Barrera, D. F. (AI), Rodriguez, C. F. (CU); Ramirez, J. G.</span>
+                    <span class="pub-title">Tidal Local Gravity Effects Measured by Remote Controlled Pendulums.</span>
+                    <span class="pub-journal">2022 8th International Engineering, Sciences and Technology Conference (IESTEC), 790–795.</span>
+                    <a href="https://doi.org/10.1109/IESTEC54539.2022.00129" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2022">
+                    <span class="pub-authors">E. A. Chavarriaga (CE), A. A. Lopera (CE), T. B. Wermuth (CE), S. Arcaro (CE), V. D. N. Bezzon (CE), C. García (CE), J. Alarcón (CE), J.G. Ramírez, R. Moreno (CE), C. Pérez Bergmann (CE)</span>
+                    <span class="pub-title">Influence of caffeine and citrulline on magnetic properties when used as new fuels in the synthesis of CoFe₂O₄ nanoparticles by gel combustion.</span>
+                    <span class="pub-journal">J. Magn. Magn. Mater. 560, 169632 (2022).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2022">
+                    <span class="pub-authors">C. T. Wolowiec (CE), J.G. Ramírez, M.-H. Lee (CE), N. Ghazikhanian (CE), N. M. Vargas (CE), A. C. Basaran (CE), P. Salev (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Stress-tailoring magnetic anisotropy of V₂O₃/Ni bilayers.</span>
+                    <span class="pub-journal">Phys. Rev. Mater. 6, 064408 (2022).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2022">
+                    <span class="pub-authors"><strong>A. Cardona-Rodríguez (ED)</strong>, E. Ramos Rodríguez (CE), <strong>D. Carranza-Celis (ED)</strong>, <strong>N. Vergara Duran (EP)</strong>, A. S. E. da Cruz (CE), O. Moscoso Londoño (CE), F. Béron (CE), M. Knobel (CE), A. Reiber (CU), D. Muraca (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Resolving magnetic contributions in BiFeO₃ nanoparticles using First-order reversal curves.</span>
+                    <span class="pub-journal">J. Magn. Magn. Mater. 556, 169409 (2022).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2021 -->
+                <li data-year="2021">
+                    <span class="pub-authors"><strong>D. Carranza-Celis (ED)</strong>, E. Skoropata (CE), A. Biswas (CE), M. R. Fitzsimmons (CE), I. K. Schuller (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Magnetism dynamics driven by phase separation in Pr-doped manganite thin films: A Ferromagnetic resonance study.</span>
+                    <span class="pub-journal">Phys. Rev. Mater. 5, 124413 (2021).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2021">
+                    <span class="pub-authors">J. J. Prías-Barragán (CE), R. González-Hernández (CE), F. A. Hoyos-Ariza (CE), J.G. Ramírez, M. R. Ibarra (CE), P. Príeto (CE)</span>
+                    <span class="pub-title">Magnetism in Graphene Oxide Nanoplatelets: the Role of Hydroxyl and Epoxy Bridges.</span>
+                    <span class="pub-journal">J. Magn. Magn. Mater. 541, 168506 (2021).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2021">
+                    <span class="pub-authors">I. Valmianski (CE), A. Fraile Rodríguez (CE), J. Rodríguez-Álvarez (CE), M. García del Muro (CE), C. Wolowiec (CE), F. Kronast (CE), J.G. Ramírez, I. K. Schuller (CE), A. Labarta (CE), X. Batlle (CE)</span>
+                    <span class="pub-title">Driving magnetic domains at the nanoscale by interfacial strain-induced proximity.</span>
+                    <span class="pub-journal">Nanoscale 13, 4985 (2021).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                 <li data-year="2021">
+                    <span class="pub-authors">H. P. Quiroz (CE), E. F. Galíndez (CE), A. Dussan (CE), <strong>A. Cardona-Rodriguez (ED)</strong>, J.G. Ramírez</span>
+                    <span class="pub-title">Super-Exchange Interaction Model in DMOs: Co-Doped TiO₂ Thin Films.</span>
+                    <span class="pub-journal">J. Mater. Sci. 56, 581–591 (2021).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2021">
+                    <span class="pub-authors">J. G. Monsalve (CE), C. Ostos (CE), E. Ramos (CE), J.G. Ramírez, O. Arnache (CE)</span>
+                    <span class="pub-title">Insight into magnetic properties in zinc ferrite thin films by tuning oxygen content.</span>
+                    <span class="pub-journal">Curr. Appl. Phys. 22, 77-83 (2021).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2020 -->
+                <li data-year="2020">
+                    <span class="pub-authors">J. A. Calderón (CE), F. Mesa (CE), A. Dussan (CE), R. González-Hernandez (CE), J.G. Ramírez</span>
+                    <span class="pub-title">The effect of Mn₂Sb₂ and Mn₂Sb secondary phases on magnetism in (GaMn)Sb thin films.</span>
+                    <span class="pub-journal">PLoS ONE 15(4), e0231538 (2020).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2020">
+                    <span class="pub-authors">E. Ramos (CE), <strong>A. Cardona-Rodriguéz (ED)</strong>, <strong>D. Carranza-Celis (ED)</strong>, R. Hernández Rodriguéz (CE), D. Muraca (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Strain-controlled ferromagnetism in BiFeO₃ Nanoparticles.</span>
+                    <span class="pub-journal">J. Phys.: Condens. Matter 32, 185703 (2020).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2019 -->
+                <li data-year="2019">
+                    <span class="pub-authors">J. del Valle (CE), P. Salev (CE), F. Tesler (CE), N. M. Vargas (CE), Y. Kalcheim (CE), P. Wang (CE), J. Trastoy (CE), M.-H. Lee (CE), G. Kassabian (CE), J.G. Ramírez, M. J. Rozenberg (CE) & I. K. Schuller (CE)</span>
+                    <span class="pub-title">Subthreshold firing in Mott nanodevices.</span>
+                    <span class="pub-journal">Nature 569, 388–392 (2019).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2019" class="highlight-publication">
+                    <span class="pub-authors"><strong>D. Carranza-Celis (EM)</strong>, <strong>A. Cardona Rodríguez (ED)</strong>, J. Narváez (CE), O. Moscoso (CE), D. Muraca (CE), M. Knobel (CE), N. Ornelas-Soto (CE), A. Reiber (CU), J.G. Ramírez</span>
+                    <span class="pub-title">Control of Multiferroic properties in BiFeO₃ nanoparticles. [TOP 100 IN PHYSICS 2019]</span>
+                    <span class="pub-journal">Sci. Rep. 9, 3182 (2019).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2019">
+                    <span class="pub-authors"><strong>A. Cardona (ED)</strong>, I. C. Arango (CE), <strong>M. F. Gomez (EP)</strong>, C. Dominguez (CE), J. Trastoy (CE), C. Urban (CE), S. Sulekar (CE), J. C. Nino (CE), I. K. Schuller (CE), M. E. Gomez (CE), J.G. Ramírez</span>
+                    <span class="pub-title">Resistive Switching in Multiferroic BiFeO₃ Films: Ferroelectricity vs vacancy migration.</span>
+                    <span class="pub-journal">Solid State Commun. 288, 38–42 (2019).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2018 -->
+                <li data-year="2018">
+                    <span class="pub-authors">J. del Valle (CE), J.G. Ramírez, M. Rozenberg (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Challenges in materials and devices for Resistive-Switching-based Neuromorphic Computing.</span>
+                    <span class="pub-journal">J. Appl. Phys. 124, 211101 (2018).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2018">
+                    <span class="pub-authors">I. Valmianski (CE), P. Y. Wang (CE), S. Wang (CE), J.G. Ramírez, S. Guénon (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">The origin of the current-driven breakdown in vanadium oxides: thermal vs electronic.</span>
+                    <span class="pub-journal">Phys. Rev. B 98, 195144 (2018).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2018">
+                    <span class="pub-authors">C. Orona-Návar (CE), R. García-Morales (CE), R. Rubio-Govea (CE), J. Mahlknecht (CE), R. Hernandez-Aranda (CE), J.G. Ramírez, K. D. P. Nigam (CE), N. Ornelas-Soto (CE)</span>
+                    <span class="pub-title">Adsorptive removal of emerging pollutants from groundwater by using modified titanate nanotubes.</span>
+                    <span class="pub-journal">J. Environ. Chem. Eng. 6(4), 5332–5340 (2018).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2018">
+                    <span class="pub-authors">A. Singer (CE), J.G. Ramírez, I. Valmianski (CE), D. Cela (CE), N. Hua (CE), R. Kukreja (CE), J. Wingert (CE), O. Kovalchuk (CE), J. M. Glownia (CE), M. Sikiroski (CE), M. Chollet (CE), M. Holt (CE), I. K. Schuller (CE), O. G. Shpyrko (CE)</span>
+                    <span class="pub-title">Non-equilibrium phase precursors to the insulator-metal transition in V₂O₃.</span>
+                    <span class="pub-journal">Phys. Rev. Lett. 120, 207601 (2018).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2017 -->
+                <li data-year="2017">
+                    <span class="pub-authors">V. R. Singh (CE), V. Jovic (CE), I. Valmianski (CE), J.G. Ramírez, B. Lamoureux (CE), I. K. Schuller (CE), K. E. Smith (CE)</span>
+                    <span class="pub-title">Irreversible metal-insulator transition in thin film VO₂ induced by soft X-ray irradiation.</span>
+                    <span class="pub-journal">Appl. Phys. Lett. 111, 241605 (2017).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2017">
+                    <span class="pub-authors">D. A. Gilbert (CE), J.G. Ramírez, T. Saerbeck (CE), J. Trastoy (CE), I. K. Schuller (CE), K. Liu (CE), J. de la Venta (CE)</span>
+                    <span class="pub-title">Growth-Induced In-Plane Uniaxial Anisotropy in V₂O₃/Ni Films.</span>
+                    <span class="pub-journal">Sci. Rep. 7, 13471 (2017).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                 <li data-year="2017">
+                    <span class="pub-authors">E. Abreu (CE), S. N. Gilbert Corder (CE), S. J. Yun (CE), S. Wang (CE), J.G. Ramírez, K. West (CE), J. Zhang (CE), S. Kittiwatanakul (CE), I. K. Schuller (CE), J. Lu (CE), S. A. Wolf (CE), H.-T. Kim (CE), M. Liu (CE), R. D. Averitt (CE)</span>
+                    <span class="pub-title">Ultrafast Electron-Lattice Coupling Dynamics in VO₂ and V₂O₃ Thin Films.</span>
+                    <span class="pub-journal">Phys. Rev. B 96, 094309 (2017).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2017">
+                    <span class="pub-authors">S. Wang (CE), J.G. Ramírez, J. Jeffet (CE), S. Bar-Ad (CE), D. Huppert (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Ultrafast photo-induced dynamics across the Metal-Insulator Transition of VO₂.</span>
+                    <span class="pub-journal">EPL 118, 27005 (2017).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2016 -->
+                <li data-year="2016">
+                    <span class="pub-authors">I. Valmianski (CE), J.G. Ramírez, C. Urban (CE), X. Batlle (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Deviation from bulk in the pressure-temperature phase diagram of V₂O₃ thin films.</span>
+                    <span class="pub-journal">Phys. Rev. B 95, 155132 (2017).</span> <!-- Dossier indica 2017, pero listado bajo 2016 -->
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2016">
+                    <span class="pub-authors">A. S. McLeod (CE), E. van Heumen (CE), J.G. Ramírez, S. Wang (CE), T. Saerbeck (CE), S. Guenon (CE), M. Goldflam (CE), L. Anderegg (CE), P. Kelly (CE), A. Mueller (CE), M. K. Liu (CE), I. K. Schuller (CE), D. N. Basov (CE)</span>
+                    <span class="pub-title">Nanotextured phase coexistence in the correlated insulator V₂O₃.</span>
+                    <span class="pub-journal">Nat. Phys. 13, 80 (2016).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2016">
+                    <span class="pub-authors">S. Guenon (CE), J.G. Ramírez, A. C. Basaran (CE), J. Wampler (CE), M. Thiemens (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Search for Superconductivity in Micrometeorites.</span> <!-- Título corregido de la publicación 41 del dossier -->
+                    <span class="pub-journal">J. Supercond. Nov. Magn. 30, 297-304 (2016).</span> <!-- Este parece ser de la pub 34, el Sci Rep 4, 7333 es de 2015 -->
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2016">
+                    <span class="pub-authors">J.G. Ramírez, J. de la Venta (CE), S. Wang (CE), T. Saerbeck (CE), A. C. Basaran (CE), X. Batlle (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Collective mode splitting in hybrid heterostructure.</span>
+                    <span class="pub-journal">Phys. Rev. B 93, 214113 (2016).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                 <li data-year="2016">
+                    <span class="pub-authors">D. Yazici (CE), A. C. Basaran (CE), J.G. Ramírez, I. K. Schuller (CE), M. B. Maple (CE)</span>
+                    <span class="pub-title">Superconducting and magnetic properties of single-crystal LaPt₂Ge₂.</span> <!-- Asumiendo que es la correcta para Supercond. Sci. Technol. -->
+                    <span class="pub-journal">Supercond. Sci. Technol. 29, 085015 (2016).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                 <li data-year="2016">
+                    <span class="pub-authors">Y. Tian (CE), A. A. Reijnders (CE), G. B. Osterhoudt (CE), I. Valmianski (CE), J.G. Ramírez, C. Urban (CE), R. Zhong (CE), J. Schneeloch (CE), G. Gu (CE), I. Henslee (CE), K. S. Burch (CE)</span>
+                    <span class="pub-title">Low vibration high numerical aperture automated variable temperature Raman microscope.</span>
+                    <span class="pub-journal">Rev. Sci. Instrum. 87, 043105 (2016).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+
+                <!-- 2015 -->
+                <li data-year="2015">
+                    <span class="pub-authors">S. Wang (CE), J.G. Ramírez, I. K. Schuller (CE)</span>
+                    <span class="pub-title">Avalanches in vanadium sesquioxide nano devices.</span>
+                    <span class="pub-journal">Phys. Rev. B 92, 085150 (2015).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2015">
+                    <span class="pub-authors">E. Abreu (CE), S. Wang (CE), J.G. Ramírez, M. Liu (CE), J. Zhang (CE), K. Geng (CE), I. K. Schuller (CE), R. D. Averitt (CE)</span>
+                    <span class="pub-title">Dynamic conductivity scaling in photoexcited V₂O₃ thin films.</span>
+                    <span class="pub-journal">Phys. Rev. B 92, 085130 (2015).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                <li data-year="2015">
+                    <span class="pub-authors">J.G. Ramírez, T. Saerbeck (CE), S. Wang (CE), J. Trastoy (CE), M. Malnou (CE), J. Lesueur (CE), J. P. Crocombette (CE), J. E. Villegas (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Effect of disorder on the metal-insulator transition of vanadium oxides: Local versus global effects.</span>
+                    <span class="pub-journal">Phys. Rev. B 91, 205123 (2015).</span>
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+                 <li data-year="2015"> <!-- Corresponde a la publicación 41 del dossier (Search for Superconductivity...) -->
+                    <span class="pub-authors">S. Guenon (CE), J.G. Ramírez, A. C. Basaran (CE), J. Wampler (CE), M. Thiemens (CE), S. Taylor (CE), I. K. Schuller (CE)</span>
+                    <span class="pub-title">Search for Superconductivity in Micrometeorites.</span>
+                    <span class="pub-journal">Sci. Rep. 4, 7333 (2015).</span> <!-- El dossier dice Sci. Rep. 4, 7333 (2015) para esta, pero el año es 2015 -->
+                    <a href="#" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI/Link</a>
+                </li>
+            </ul>
+            <p class="text-center" style="margin-top:20px;"><small>Lista completa y detallada en el Dossier (Sección 5.4).</small></p>
+        </section>
+
+        <section id="sgr-project">
+            <div class="container container-with-alt-bg">
+                <h2>Liderazgo en Propuesta de Regalías (SGR) ante Minciencias</h2>
+                <p class="section-intro-text">
+                    Lideré como Investigador Principal la iniciativa "Fortalecimiento de la capacidad de investigación nacional en computación cuántica y neuromórfica". Este megaproyecto, con una inversión sin precedentes para la Universidad de $36.500 millones COP (directos a Uniandes), fortalece capacidades en 8 departamentos del país y posiciona a Uniandes como líder nacional.
+                </p>
+                <div class="sgr-details-grid">
+                    <div class="sgr-impact-visual chart-container-sgr"> <!-- Nueva clase para estilizar específicamente -->
+                        <h3>Figura 5.8.1: Distribución de Recursos SGR por Institución</h3>
+                        <canvas id="sgrDistributionChart"></canvas>
+                        <!-- El caption se puede añadir con JS o dejarlo fuera si el título del gráfico es suficiente -->
+                    </div>
+                    <div class="sgr-video">
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/vRhYeEcZmXg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <p class="caption-text">Video de presentación del Proyecto.</p>
+                    </div>
+                </div>
+                <div class="text-center" style="margin-top: 30px;">
+                    <p>&nbsp;</p>
+                     <a href="#research-projects" class="btn btn-primary">Ver Todos los Proyectos</a>
+                </div>
+                <p>&nbsp;</p>
+            </div>
+        </section>
+
+        <section id="research-projects" class="container">
+            <h2>Otros Proyectos de Investigación Destacados</h2>
+             <!-- Usar tarjetas para proyectos -->
+            <div class="cards-grid project-cards">
+                <div class="card project-card">
+                    <h3>IMRC 2025 / Symposium: Quantum Materials</h3>
+                    <p><strong>Rol:</strong> Investigador Principal</p>
+                    <p><strong>Entidad:</strong> Office of Naval Research USA</p>
+                    <p><strong>Monto:</strong> 12.000 USD (Aceptado)</p>
+                    <p>Organización de simposio sobre nanoestructuras cuánticas 0D, 1D, 2D.</p>
+                </div>
+                <div class="card project-card">
+                    <h3>Fortalecimiento de Capacidades en I+D+I para Detección y Mitigación de Contaminantes</h3>
+                    <p><strong>Rol:</strong> Co-Investigador</p>
+                    <p><strong>Entidad:</strong> Minciencias Colombia</p>
+                    <p><strong>Monto:</strong> 30.000 Millones (Lista de elegibles)</p>
+                    <p>Mejora de calidad del recurso hídrico en Caldas, Caquetá, Cauca y Valle Del Cauca.</p>
+                </div>
+                <div class="card project-card">
+                    <h3>MAGNAMED (H2020-MSCA-RISE-734801)</h3>
+                    <p><strong>Rol:</strong> Co-Investigador - Líder Nodo Colombia</p>
+                    <p><strong>Entidad:</strong> Horizon - 2020</p>
+                    <p><strong>Monto:</strong> Viajes y pasantías (Aceptado)</p>
+                    <p>Nuevas nanoestructuras magnéticas para aplicaciones médicas.</p>
+                </div>
+            </div>
+             <p class="text-center" style="margin-top:30px;"><small>Lista completa y propuestas enviadas en el Dossier (Tabla 5.7.1).</small></p>
+        </section>
+
+        <section id="internationalization">
+            <div class="container container-with-alt-bg">
+                <h2>Internacionalización y Colaboraciones Estratégicas</h2>
+                <p class="section-intro-text">
+                    Mantengo vínculos académicos activos con grupos de investigación de prestigio internacional (UC San Diego, UNICAMP Brasil, U. País Vasco) y he participado en numerosas conferencias y seminarios globales. Mi rol como editor en JMMM y la participación en la Asociación Latinoamericana de Magnetismo (ALMA) refuerzan esta proyección.
+                </p>
+                <!-- Opcional: Mapa interactivo de colaboraciones (Leaflet.js) -->
+                <div id="collaboration-map" style="height: 400px; margin-top: 30px; border-radius: 8px;"></div> 
+                <div class="text-center" style="margin-top:30px;">
+                    <a href="#invited-talks" class="btn btn-secondary">Ver Charlas Invitadas</a>
+                </div>
+                <p>&nbsp;</p>
+            </div>
+        </section>
+
+                <!-- ... (sección anterior: Internacionalización) ... -->
+
+                <section id="invited-talks" class="container">
+                    <h2>Charlas Invitadas y Presentaciones Clave</h2> <!-- Título ligeramente ajustado -->
+                    <p class="section-intro-text">
+                        He tenido el privilegio de compartir mis hallazgos y contribuciones científicas en diversos escenarios académicos nacionales e internacionales, fortaleciendo redes de colaboración y posicionando la investigación de la Universidad de los Andes.
+                    </p>
+                    <div class="filters talks-filters"> <!-- Filtros específicos para charlas -->
+                        <label for="talk-year-filter">Filtrar por Año:</label>
+                        <select id="talk-year-filter">
+                            <option value="all">Todos los Años</option>
+                            <option value="2025">2025</option>
+                            <option value="2024">2024</option>
+                            <option value="2023">2023</option>
+                            <option value="2022">2022</option>
+                            <option value="2021">2021</option>
+                            <option value="2020">2020</option>
+                            <option value="2019">2019</option>
+                            <option value="2018">2018</option>
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                            <!-- Añade más años si es necesario -->
+                        </select>
+                        <input type="text" id="talk-search-filter" placeholder="Buscar por título o evento...">
+                    </div>
+        
+                    <ul id="invited-talks-list" class="talks-list">
+                        <!-- Las charlas se cargarán aquí dinámicamente o estarán listadas -->
+                        <!-- He dejado las que ya tenías como ejemplo, pero las cargaremos desde JS -->
+                    </ul>
+                    <p class="text-center" style="margin-top:20px;"><small>Esta lista representa una selección de presentaciones. Para detalles adicionales, consulte el Dossier.</small></p>
+                </section>
+        
+                <!-- ... (resto de las secciones) ... -->
+
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Juan Gabriel Ramírez Rojas. Todos los derechos reservados.</p>
+        <p>Postulación a Profesor Titular - Universidad de los Andes</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
