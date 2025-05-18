@@ -1118,6 +1118,21 @@ main section:last-child {
     margin-left: auto;
     margin-right: auto;
 }
+img,
+.responsive-image { /* Si tienes una clase específica */
+    max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
+    height: auto;    /* Mantiene la proporción de la imagen al escalar el ancho */
+    display: block;  /* Ayuda a evitar espacios extra debajo de la imagen y permite margin: auto */
+    margin-left: auto; /* Opcional: para centrar imágenes si su contenedor es más ancho */
+    margin-right: auto;/* Opcional: para centrar imágenes */
+}
+
+/* Para iframes como el de YouTube, también es buena idea */
+iframe {
+    max-width: 100%;
+    /* Podrías necesitar un wrapper para mantener el aspect ratio,
+       pero max-width: 100% es un buen comienzo. */
+}
 .caption-text {
     font-size: 0.85rem;
     color: #a0a0a0;
@@ -1341,7 +1356,11 @@ main section:last-child {
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
 }
 
+
 .responsive-table table {
+    width: 100%; /* La tabla intenta ocupar el 100% del .table-container */
+    min-width: 600px; /* Un ancho mínimo antes de que aparezca el scroll, ajusta según tu contenido */
+    border-collapse: collapse;
     width: 100%;
     border-collapse: collapse;
     color: #e0e0e0;
@@ -1945,6 +1964,11 @@ main section:last-child {
     /* O podrías usar min-height si quieres que se expanda si hay muchas barras */
     /* min-height: 400px; */
     position: relative; /* A veces necesario para que Chart.js calcule bien el tamaño */
+    width: 100%; /* Ocupa el ancho disponible de su padre */
+    max-width: 700px; /* Un límite máximo para pantallas grandes, si lo deseas */
+                   /* Ajusta esta altura según el gráfico y el espacio disponible */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .chart-container-sgr h3 {
@@ -1953,6 +1977,11 @@ main section:last-child {
     margin-bottom: 15px;
     color: #e0e0e0;
 }
+
+/* O si quieres que la altura sea relativa al ancho (mantener proporción)
+   puedes usar el "padding-bottom hack" en el contenedor, pero es más complejo
+   y con maintainAspectRatio: false, fijar la altura suele ser más fácil.
+*/
 
 #sgrDistributionChart { /* El canvas en sí */
     max-width: 100%; /* Para que sea responsivo */
@@ -2003,3 +2032,4 @@ main section:last-child {
     color: #c0c0c0;
     font-style: italic;
 }
+
