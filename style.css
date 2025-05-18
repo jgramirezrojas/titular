@@ -19,11 +19,10 @@ body {
 
 .container {
     max-width: 1100px;
-    margin-left: auto;  /* Centrado automático */
-    margin-right: auto; /* Centrado automático */
-    padding: 0px 20px; /* Ej: 60px de padding arriba/abajo, 20px a los lados */
-                        /* Ajusta este padding vertical (60px) según lo necesites para el contenido */
-    overflow: hidden; /* Mantenido de tu CSS original */
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .container-with-alt-bg {
@@ -1111,13 +1110,7 @@ main section:last-child {
     color: #c0c0c0;
 }
 
-.responsive-image {
-    max-width: 100%;
-    height: auto;
-    display: block; /* Para centrar con margin auto si es necesario */
-    margin-left: auto;
-    margin-right: auto;
-}
+
 img,
 .responsive-image { /* Si tienes una clase específica */
     max-width: 100%; /* La imagen nunca será más ancha que su contenedor */
@@ -1125,6 +1118,9 @@ img,
     display: block;  /* Ayuda a evitar espacios extra debajo de la imagen y permite margin: auto */
     margin-left: auto; /* Opcional: para centrar imágenes si su contenedor es más ancho */
     margin-right: auto;/* Opcional: para centrar imágenes */
+}
+img.responsive-image {
+    max-width: 100% !important;
 }
 
 /* Para iframes como el de YouTube, también es buena idea */
