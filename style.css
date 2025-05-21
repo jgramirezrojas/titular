@@ -165,7 +165,7 @@ main {
     position: relative; /* Importante para el posicionamiento de hijos absolutos */
     overflow: hidden;
     /* Ya no necesita padding-top aquí, main lo maneja */
-    background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-lab.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('figures/fondo_1.png') no-repeat center center/cover;
 }
 
 .hero-overlay { /* Si no usas gradient en background de #hero */
@@ -450,6 +450,11 @@ footer p {
     position: relative; /* Para el .hero-overlay si decides usarlo por separado */
     padding: 40px 20px; /* Añadimos un padding interno para el contenido */
     /* No necesita z-index aquí, ya que es contenido normal del main */
+}
+
+/* Fondos específicos para page-hero de cada página */
+#profile-hero {
+    background-image: linear-gradient(rgba(26, 26, 46, 0.8), rgba(22, 36, 71, 0.8)), url('figures/profile-hero-background.png');
 }
 
 .hero-content-simple {
@@ -739,7 +744,7 @@ footer p {
 
 #teaching-hero {
     /* Hereda estilos de .page-hero, puedes particularizar el background-image si quieres */
-    background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-aula.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('figures/teaching-hero-background.png') no-repeat center center/cover;
     /* Reemplaza placeholder-aula.jpg con una imagen de aula o estudiantes */
 }
 
@@ -1075,7 +1080,7 @@ main section:last-child {
    ========================================================================== */
 
    #research-hero {
-    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-investigacion-bg.jpg');
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('figures/placeholder-investigacion-bg.png');
     /* Reemplaza con una imagen de fondo relevante para investigación */
 }
 
@@ -1323,7 +1328,7 @@ iframe {
    ========================================================================== */
 
    #institutional-hero {
-    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-uniandes-edificio.jpg');
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('figures/placeholder-uniandes-edificio.png');
     /* Reemplaza con una imagen de la universidad, un edificio emblemático, etc. */
 }
 
@@ -1471,7 +1476,7 @@ iframe {
    ========================================================================== */
 
    #vision-hero {
-    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-vision-bg.jpg');
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('figures/placeholder-vision-bg.png');
     /* Reemplaza con una imagen de fondo inspiradora o abstracta que represente el futuro/visión */
 }
 
@@ -2034,7 +2039,7 @@ iframe {
    ========================================================================== */
 
 #annexes-hero {
-    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('placeholder-documentos-bg.jpg');
+    background-image: linear-gradient(rgba(26, 26, 46, 0.85), rgba(22, 36, 71, 0.85)), url('figures/placeholder-documentos-bg.png');
     /* Reemplaza con una imagen de fondo de documentos, biblioteca, o abstracta */
 }
 
@@ -2139,93 +2144,68 @@ iframe {
 /* ... (estilos existentes) ... */
 
 /* ==========================================================================
-   Estilos Específicos por Sección (investigacion.html) - Adiciones
+   Estilos para el Gráfico de Cuartiles en investigacion.html
    ========================================================================== */
 
-/* ... (estilos existentes de #research-hero, #research-overview, #research-impact) ... */
-
-#publications h2 { /* Ajustar margen si es necesario para acomodar el gráfico arriba */
-    margin-bottom: 30px;
-}
-
+/* Contenedor principal de TODA la sección del gráfico de cuartiles (fondo, padding general) */
 .quartile-chart-section {
     background-color: #1f3061;
     padding: 30px 20px;
     border-radius: 8px;
-    margin-bottom: 40px;
+    margin-bottom: 40px; /* Espacio después de esta sección completa */
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    /* display: flex; */ /* Quitamos flex aquí si no es necesario para alinear el título general de la sección */
-    /* flex-direction: column; */
-    /* align-items: center; */
+    /* No necesitamos flex aquí si la estructura interna es de bloque simple */
 }
 
-/* Contenedor específico para el gráfico y su título */
-.chart-container.quartile-bar-chart-container { /* Aseguramos que aplique a este gráfico */
-    max-width: 600px; /* O el ancho que desees */
-    width: 100%; /* Para que ocupe el espacio dentro de su contenedor padre si es más pequeño */
-    height: 350px;    /* ALTURA FIJA PARA EL CANVAS - AJUSTA ESTO */
-    margin: 0 auto 5px auto; /* Centrado y margen inferior ANTES del caption */
-    position: relative; /* Importante para que Chart.js se renderice correctamente */
+/* Contenedor específico para el gráfico (canvas) y su título H3 */
+.quartile-bar-chart-container { /* Renombrado para claridad, usa este consistentemente */
+    max-width: 600px;   /* Ancho máximo del área del gráfico */
+    width: 100%;        /* Ocupa el ancho disponible hasta el max-width */
+    height: 370px;      /* ALTURA FIJA para el canvas y su título. AJUSTA ESTE VALOR. */
+                        /* Asegúrate que maintainAspectRatio: false en JS */
+    margin: 0 auto 15px auto; /* Centrado y margen inferior ANTES del caption */
+    position: relative; /* Para el renderizado correcto de Chart.js */
 }
 
-.chart-container.quartile-bar-chart-container h3 {
+/* Título DENTRO del contenedor del gráfico (arriba del canvas) */
+.quartile-bar-chart-container h3 {
     text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 0px; /* Espacio entre título y canvas */
+    font-size: 1.3rem; /* Ligeramente más grande para el título del gráfico */
+    margin-bottom: 15px; /* Espacio entre el título H3 y el canvas del gráfico */
     color: #e0e0e0;
+    font-family: 'Montserrat', sans-serif; /* Asegurar consistencia con otros H3 */
+    font-weight: 600; /* Ligeramente menos pesado que los H2 de sección */
 }
 
-/* El canvas debe ocupar el espacio de su contenedor (ajustado por Chart.js) */
-#quartilePieChart { /* O #quartileBarChart */
-    /* Chart.js usualmente maneja el tamaño del canvas basado en su contenedor.
-       No es necesario poner width/height aquí explícitamente si el contenedor los tiene. */
+/* Estilos para el canvas mismo (Chart.js lo maneja, pero podemos asegurar) */
+#quartilePieChart { /* O el ID que estés usando para el canvas del gráfico de cuartiles */
+    /* Chart.js debería hacer que ocupe el .quartile-bar-chart-container si maintainAspectRatio: false */
 }
 
-
-
-.quartile-pie-chart-container h3 {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    /* color: #e0e0e0; */
-}
-
+/* Estilos para el CAPTION debajo del gráfico */
 .quartile-chart-caption {
     text-align: center;
-    color: #c0c0c0;
-    font-size: 0.95rem;
-    max-width: 700px; /* O igual al max-width del gráfico para consistencia */
-    margin: 0 auto; /* Centrado */
-    padding-top: 0px; /* ESPACIO explícito ARRIBA del caption */
-    /* border-top: 1px solid rgba(128, 191, 255, 0.2); /* Línea separadora sutil (opcional) */
+    color: #b0b0b0; /* Un gris un poco más claro para el caption */
+    font-size: 0.9rem; /* Tamaño de fuente para el caption */
+    line-height: 1.5;  /* Espaciado entre líneas para el caption */
+    max-width: 600px;  /* Mismo ancho que el gráfico para alineación visual */
+    margin: 0 auto;    /* Centrado */
+    /* padding-top: 10px; Ya no es necesario si el contenedor del gráfico tiene buen margin-bottom */
 }
 
 .quartile-chart-caption p {
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Espacio entre párrafos del caption */
+}
+.quartile-chart-caption p:last-child {
+    margin-bottom: 0; /* Sin margen en el último párrafo del caption */
 }
 
 .quartile-chart-caption strong {
-    color: #e0e0e0;
+    color: #d0d0d0; /* Color para el texto en negrita dentro del caption */
 }
 
-/* ... (estilos existentes) ... */
-
-/* Estilos para el contenedor del gráfico de barras de cuartiles */
-.quartile-bar-chart-container { /* O .quartile-pie-chart-container si mantuviste ese nombre */
-    max-width: 600px;
-    /* Ajusta la altura explícitamente para dejar espacio claro debajo para el caption.
-       Si usas maintainAspectRatio: false, esta altura será respetada.
-       Si maintainAspectRatio: true (o por defecto), la altura se basará en el ancho y el aspect ratio.
-       Prueba con una altura fija o min-height. */
-    height: 320px; /* INCREMENTA ESTA ALTURA O USA MIN-HEIGHT */
-    /* min-height: 350px; */
-    margin: 0 auto 5px auto; /* AUMENTAR MARGEN INFERIOR para separar del caption */
-}
-
-.quartile-bar-chart-container h3 {
-    text-align: center;
-    font-size: 1.2rem;
-    margin-bottom: 20px; /* Espacio entre título y gráfico */
-    color: #e0e0e0;
+/* Asegurar que el H2 de la sección de publicaciones tenga espacio antes del .quartile-chart-section */
+#publications > h2 { /* El H2 que es hijo directo de #publications */
+    margin-bottom: 30px; /* Espacio antes del bloque del gráfico */
 }
 
