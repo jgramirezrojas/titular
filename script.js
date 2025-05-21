@@ -19,6 +19,7 @@ if (typeof Chart !== 'undefined') { // Asegurarse que Chart.js está cargado
     console.error("Chart.js no está cargado. Los gráficos no funcionarán.");
 }
 
+Chart.register(ChartDataLabels);
 
 document.addEventListener('DOMContentLoaded', () => {
     // Menú responsive (Hamburguesa)
@@ -1082,6 +1083,214 @@ if (sgrDistributionCtx) {
         },
         // Registrar el plugin de datalabels si lo vas a usar
         // plugins: [ChartDataLabels] // Descomenta si instalas y registras chartjs-plugin-datalabels
+    });
+}
+
+// ... (código existente) ...
+
+
+// GRÁFICO DE DISTRIBUCIÓN DE CUARTILES (investigacion.html) - BARRAS HORIZONTALES
+const quartileChartCtx = document.getElementById('quartilePieChart'); // O el ID que estés usando para el canvas
+if (quartileChartCtx) {
+    const quartileLabels = ['Q1', 'Q2', 'Q3', 'Q4'];
+    const quartileValues = [26, 10, 3, 0]; // Tus datos
+
+    const totalPublications = quartileValues.reduce((sum, value) => sum + value, 0);
+
+    new Chart(quartileChartCtx, {
+        type: 'bar',
+        data: {
+            labels: quartileLabels,
+            datasets: [{
+                label: 'Número de Publicaciones',
+                data: quartileValues,
+                backgroundColor: [
+                    'rgba(0, 170, 255, 0.8)',  // Q1
+                    'rgba(0, 136, 204, 0.8)',  // Q2
+                    'rgba(128, 191, 255, 0.7)',// Q3
+                    'rgba(100, 100, 120, 0.6)' // Q4 (se mostrará como una barra de altura 0 si el valor es 0)
+                ],
+                borderColor: [
+                    'rgba(0, 170, 255, 1)',
+                    'rgba(0, 136, 204, 1)',
+                    'rgba(128, 191, 255, 1)',
+                    'rgba(100, 100, 120, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            indexAxis: 'y', // Para barras horizontales
+            scales: {
+                x: { // Eje X (valores de las publicaciones)
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#e0e0e0',
+                        stepSize: 5, // Ajusta según el rango de tus datos
+                        padding: 10 // Espacio entre los ticks y el eje
+                    },
+                    grid: {
+                        drawOnChartArea: true, // Dibuja líneas de cuadrícula para los ticks del eje X
+                        color: 'rgba(224, 224, 224, 0.1)', // Color de las líneas de cuadrícula visibles
+                        drawBorder: true, //  dibuja la línea que bordea el área del gráfico en este eje
+
+                    },
+                    title: {
+                        display: true,
+                        text: 'Número de Publicaciones',
+                        color: '#c0c0c0',
+                        font: {
+                            size: 12,
+                            weight: 'normal'
+                        },
+                        padding: { top: 10, bottom: 0 }
+                    }
+                },
+                y: { // Eje Y (Cuartiles Q1, Q2, etc.)
+                    ticks: {
+                        color: '#e0e0e0',
+                        padding: 10 // Espacio entre las etiquetas y el eje
+                    },
+                    grid: {
+                        drawOnChartArea: true, // Dibuja líneas de cuadrícula para los ticks del eje Y (serán verticales)
+                        color: 'rgba(224, 224, 224, 0.1)',
+                        drawBorder: true //  dibuja la línea que bordea el área del gráfico en este eje
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false // La leyenda del dataset es usualmente redundante para un solo dataset en barras
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(22, 36, 71, 0.9)', // Fondo del tooltip
+                    titleColor: '#00aaff', // Color del título del tooltip
+                    bodyColor: '#e0e0e0', // Color del cuerpo del tooltip
+                    borderColor: '#00aaff',
+                    borderWidth: 1,
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || ''; // "Número de Publicaciones"
+                            if (label) {
+                                label += ': ';
+                            }
+                            // Para barras horizontales (indexAxis: 'y'), el valor está en context.parsed.x
+                            const value = context.parsed.x;
+                            label += value;
+
+                            const percentage = totalPublications > 0 ? ((value / totalPublications) * 100).toFixed(1) : 0;
+                            label += ` (${percentage}%)`;
+                            return label;
+                        }
+                    }
+                },
+                title: { // Título principal del gráfico (opcional, ya que tienes un <h3> en HTML)
+                    display: true,
+                    text: 'Distribución de Publicaciones por Cuartil (Q) desde 2015',
+                    color: '#ffffff',
+                    font: {
+                        size: 16,
+                        family: 'Montserrat, sans-serif' // Coincidir con tus h
+                    },
+                    padding: {
+                        top: 0, // Si el h3 ya da espacio
+                        bottom: 20 // Espacio debajo del título del gráfico
+                    }
+                },
+                    datalabels: {
+                        // --- POSICIONAMIENTO ---
+                        anchor: 'center',
+                        // Descripción: Define el punto de anclaje de la etiqueta en la barra.
+                        // Opciones:
+                        //  'start': Al inicio de la barra (cerca del eje Y para barras horizontales).
+                        //  'center': En el centro de la barra.
+                        //  'end': Al final de la barra (donde termina la barra).
+                        // Para barras horizontales, 'end' suele ser una buena opción para poner el texto al final de la barra.
+
+                        align: 'end',
+                        // Descripción: Define la alineación de la etiqueta con respecto a su punto de anclaje.
+                        // Opciones (relativas a la barra y 'anchor'):
+                        //  'start': El inicio de la etiqueta se alinea con el 'anchor'.
+                        //  'center': El centro de la etiqueta se alinea con el 'anchor'.
+                        //  'end': El final de la etiqueta se alinea con el 'anchor'.
+                        // También puede ser un ángulo (ej. 45) o valores como 'left', 'right', 'top', 'bottom' (más útil para 'center' anchor).
+                        // Para 'anchor: end' en barras horizontales, 'align: start' o 'align: center' podría poner la etiqueta justo *después* de la barra si hay 'offset'.
+                        // 'align: end' con 'anchor: end' la pondría justo *dentro* al final de la barra.
+                        // Para tu imagen, parece que los números están *dentro* y al final de la barra.
+
+                        offset: -10, // Ajusta este valor si 'align: end' y 'anchor: end' no es suficiente
+                        // Descripción: Distancia en píxeles desde el punto de anclaje.
+                        // Un valor positivo mueve la etiqueta *hacia afuera* de la barra (si align lo permite).
+                        // Un valor negativo mueve la etiqueta *hacia adentro* de la barra.
+                        // Si anchor es 'end' y align es 'end', un offset negativo la moverá más hacia adentro desde el final.
+
+                        padding: 0, // O {top: 2, bottom: 2} etc.
+                        // Descripción: Padding alrededor del texto de la etiqueta.
+
+                        // --- FORMATEO DEL TEXTO ---
+                        formatter: (value, context) => {
+                            // 'value' es el valor numérico del dato para esa barra (ej. 26, 10, 3, 0).
+                            // 'context' es un objeto con información sobre el dato, dataset, índice, etc.
+                            // const totalPublications = context.chart.data.datasets[0].data.reduce((sum, val) => sum + val, 0);
+                            // const percentage = totalPublications > 0 ? ((value / totalPublications) * 100).toFixed(0) : 0;
+
+                            if (value > 0) { // Solo mostrar la etiqueta si el valor es mayor a 0
+                                // return value + ` (${percentage}%)`; // Muestra: "26 (67%)"
+                                return value; // Muestra solo el valor: "26" (como en tu imagen)
+                            }
+                            // Si quieres mostrar "0" para la barra Q4, quita el if o ajusta la condición:
+                            // return value; // Esto mostraría "0"
+
+                            return null; // No dibuja ninguna etiqueta para esta barra si el valor no cumple la condición.
+                                         // Si Q4 es 0 y quieres que se muestre "0", entonces usa `return value;` directamente.
+                        },
+
+                        // --- ESTILO DEL TEXTO ---
+                        color: (context) => {
+                            // Color dinámico para asegurar contraste con el color de la barra.
+                            const value = context.dataset.data[context.dataIndex];
+                            const barColor = context.dataset.backgroundColor[context.dataIndex]; // Color de la barra actual
+
+                            // Lógica simple para elegir blanco o negro basado en la luminosidad (muy simplificado)
+                            // Puedes usar una librería para calcular mejor la luminosidad si es necesario.
+                            // Este es un ejemplo básico: si la barra es muy oscura, texto claro, y viceversa.
+                            // Los colores de tus barras son azules, así que un color claro para el texto debería funcionar bien.
+                            // Para tu imagen, los números parecen ser un azul más oscuro o gris sobre las barras claras.
+                            // Y blanco/gris claro sobre las barras más oscuras.
+
+                            // Ejemplo para tu imagen:
+                            // Si la barra Q1 (26) es azul brillante, el texto "26" es un azul más oscuro.
+                            // Si la barra Q3 (3) es un azul más claro, el texto "3" es blanco/casi blanco.
+                            if (context.dataIndex === 0) return '#FFFFFF'; // Azul oscuro para Q1 (alto impacto)
+                            if (context.dataIndex === 1) return '#FFFFFF'; // Blanco para Q2
+                            if (context.dataIndex === 2) return '#FFFFFF'; // Azul muy oscuro/casi negro para Q3
+                            if (context.dataIndex === 3 && value === 0) return '#a0a0a0'; // Gris para el "0" de Q4
+
+                            return '#FFFFFF'; // Color por defecto
+                        },
+                        // O un color fijo si todas las barras tienen buen contraste con él:
+                        // color: '#FFFFFF', // Texto blanco
+
+                        font: {
+                            weight: 'normal', // 'bold' o 'normal'
+                            size: 11,       // Tamaño de la fuente
+                            family: 'Open Sans, sans-serif' // Coincidir con tu fuente principal
+                        },
+
+                        // --- ROTACIÓN (raramente necesario para datalabels en barras) ---
+                        // rotation: 0, // Ángulo en grados
+
+                        // --- VISIBILIDAD (puedes ocultar etiquetas condicionalmente) ---
+                        // display: (context) => {
+                        //     return context.dataset.data[context.dataIndex] > 0; // Solo muestra si el valor es > 0
+                        // }
+                        // Esto es similar a devolver `null` en el `formatter`.
+                    }
+            }
+        }
     });
 }
 

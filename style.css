@@ -2135,3 +2135,97 @@ iframe {
         font-size: 1rem;
     }
 }
+
+/* ... (estilos existentes) ... */
+
+/* ==========================================================================
+   Estilos Específicos por Sección (investigacion.html) - Adiciones
+   ========================================================================== */
+
+/* ... (estilos existentes de #research-hero, #research-overview, #research-impact) ... */
+
+#publications h2 { /* Ajustar margen si es necesario para acomodar el gráfico arriba */
+    margin-bottom: 30px;
+}
+
+.quartile-chart-section {
+    background-color: #1f3061;
+    padding: 30px 20px;
+    border-radius: 8px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    /* display: flex; */ /* Quitamos flex aquí si no es necesario para alinear el título general de la sección */
+    /* flex-direction: column; */
+    /* align-items: center; */
+}
+
+/* Contenedor específico para el gráfico y su título */
+.chart-container.quartile-bar-chart-container { /* Aseguramos que aplique a este gráfico */
+    max-width: 600px; /* O el ancho que desees */
+    width: 100%; /* Para que ocupe el espacio dentro de su contenedor padre si es más pequeño */
+    height: 350px;    /* ALTURA FIJA PARA EL CANVAS - AJUSTA ESTO */
+    margin: 0 auto 5px auto; /* Centrado y margen inferior ANTES del caption */
+    position: relative; /* Importante para que Chart.js se renderice correctamente */
+}
+
+.chart-container.quartile-bar-chart-container h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 0px; /* Espacio entre título y canvas */
+    color: #e0e0e0;
+}
+
+/* El canvas debe ocupar el espacio de su contenedor (ajustado por Chart.js) */
+#quartilePieChart { /* O #quartileBarChart */
+    /* Chart.js usualmente maneja el tamaño del canvas basado en su contenedor.
+       No es necesario poner width/height aquí explícitamente si el contenedor los tiene. */
+}
+
+
+
+.quartile-pie-chart-container h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    /* color: #e0e0e0; */
+}
+
+.quartile-chart-caption {
+    text-align: center;
+    color: #c0c0c0;
+    font-size: 0.95rem;
+    max-width: 700px; /* O igual al max-width del gráfico para consistencia */
+    margin: 0 auto; /* Centrado */
+    padding-top: 0px; /* ESPACIO explícito ARRIBA del caption */
+    /* border-top: 1px solid rgba(128, 191, 255, 0.2); /* Línea separadora sutil (opcional) */
+}
+
+.quartile-chart-caption p {
+    margin-bottom: 10px;
+}
+
+.quartile-chart-caption strong {
+    color: #e0e0e0;
+}
+
+/* ... (estilos existentes) ... */
+
+/* Estilos para el contenedor del gráfico de barras de cuartiles */
+.quartile-bar-chart-container { /* O .quartile-pie-chart-container si mantuviste ese nombre */
+    max-width: 600px;
+    /* Ajusta la altura explícitamente para dejar espacio claro debajo para el caption.
+       Si usas maintainAspectRatio: false, esta altura será respetada.
+       Si maintainAspectRatio: true (o por defecto), la altura se basará en el ancho y el aspect ratio.
+       Prueba con una altura fija o min-height. */
+    height: 320px; /* INCREMENTA ESTA ALTURA O USA MIN-HEIGHT */
+    /* min-height: 350px; */
+    margin: 0 auto 5px auto; /* AUMENTAR MARGEN INFERIOR para separar del caption */
+}
+
+.quartile-bar-chart-container h3 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 20px; /* Espacio entre título y gráfico */
+    color: #e0e0e0;
+}
+
