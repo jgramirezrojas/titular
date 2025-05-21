@@ -19,7 +19,7 @@ if (typeof Chart !== 'undefined') { // Asegurarse que Chart.js está cargado
     console.error("Chart.js no está cargado. Los gráficos no funcionarán.");
 }
 
-Chart.register(ChartDataLabels);
+
 
 document.addEventListener('DOMContentLoaded', () => {
     // Menú responsive (Hamburguesa)
