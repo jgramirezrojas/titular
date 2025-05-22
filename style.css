@@ -1553,6 +1553,33 @@ iframe {
     }
 }
 
+
+/* Estilos para la sección del Podcast Senecast */
+#podcast-senecast .container { /* Asegurar que el container interno tenga buen padding */
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.podcast-player-container {
+    max-width: 700px; /* Limitar el ancho máximo del reproductor */
+    margin: 30px auto 0 auto; /* Centrar y margen superior */
+    border-radius: 8px; /* Bordes redondeados para el iframe */
+    overflow: hidden; /* Para que el borde redondeado afecte al iframe */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.podcast-player-container iframe {
+    display: block; /* Para eliminar espacio extra debajo del iframe */
+    border: none; /* Asegurar que no haya borde del iframe mismo */
+}
+
+#podcast-senecast .btn-secondary i.fab.fa-spotify {
+    margin-right: 8px; /* Espacio entre el icono de Spotify y el texto */
+    font-size: 1.2em; /* Hacer el icono un poco más grande */
+}
+
+
+
 /* ==========================================================================
    Estilos Específicos por Sección (vision.html)
    ========================================================================== */
