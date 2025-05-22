@@ -1075,6 +1075,88 @@ main section:last-child {
     color: #e0e0e0;
 }
 
+
+/* ... (estilos existentes) ... */
+
+/* Estilos para Tarjetas de Playlists de YouTube */
+.playlist-cards-grid .card.playlist-card {
+    /* Hereda de .card pero podemos anular o añadir */
+    padding: 0; /* Quitar padding si la imagen va a tope */
+    overflow: hidden; /* Para que los bordes redondeados afecten a la imagen */
+}
+
+.playlist-thumbnail-link {
+    display: block;
+    position: relative; /* Para posicionar el icono de play */
+    overflow: hidden; /* Para que la imagen no se salga si tiene efectos de hover */
+}
+
+.playlist-thumbnail {
+    display: block;
+    width: 100%;
+    height: auto; /* Mantiene la proporción de la imagen */
+    max-height: 200px; /* Limita la altura del thumbnail, ajusta según necesites */
+    object-fit: cover; /* Asegura que la imagen cubra el área, recortando si es necesario */
+    border-top-left-radius: 8px; /* Heredar o igualar el radius de .card */
+    border-top-right-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.playlist-thumbnail-link:hover .playlist-thumbnail {
+    transform: scale(1.05); /* Ligero zoom al pasar el mouse */
+}
+
+.playlist-play-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 3rem; /* Tamaño del icono de YouTube */
+    color: rgba(255, 0, 0, 0.8); /* Rojo de YouTube con transparencia */
+    opacity: 0.8;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.playlist-thumbnail-link:hover .playlist-play-icon {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.playlist-card .card-content {
+    padding: 20px; /* Padding para el texto debajo de la imagen */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Para que el link-arrow se quede abajo */
+}
+
+.playlist-card .card-content h3 {
+    font-size: 1.2rem; /* Ajustar si es necesario */
+    margin-bottom: 10px;
+}
+
+.playlist-card .card-content p {
+    font-size: 0.9rem;
+    flex-grow: 1; /* Empuja el link-arrow hacia abajo */
+    margin-bottom: 15px;
+}
+
+.playlist-card .card-content .link-arrow {
+    align-self: flex-start; /* Alinea el botón/link a la izquierda */
+}
+
+
+/* Ajuste para .card.playlist-card si el .card general tiene mucho padding y afecta */
+.card.playlist-card .card-icon { /* Si tenías un .card-icon general, aquí no lo usamos */
+    display: none;
+}
+
+
+
+
+
+
+
+
 /* ==========================================================================
    Estilos Específicos por Sección (investigacion.html)
    ========================================================================== */
