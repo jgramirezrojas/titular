@@ -2318,3 +2318,18 @@ iframe {
     margin-bottom: 30px; /* Espacio antes del bloque del gráfico */
 }
 
+/* ==========================================================================
+   Animación CSS Faltante para el Menú Hamburguesa
+   ========================================================================== */
+
+@keyframes navLinkFade {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+
